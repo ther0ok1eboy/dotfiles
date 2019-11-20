@@ -1,0 +1,45 @@
+out_to_x no
+out_to_console yes
+background no
+double_buffer no
+update_interval 1
+total_run_times 0
+override_utf8_locale no
+short_units yes
+if_up_strictness address
+cpu_avg_samples 2
+
+
+TEXT
+[
+{ "full_text" : ${if_up wlp3s0}"   ${upspeed wlp3s0}/s  ${downspeed wlp3s0}/s"${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : ${if_up eno1}"  ${upspeed enp2s0}/s  ${downspeed enp2s0}/s"${else}""${endif}, "color" : "\#94F397" },
+
+${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "separator", "full_text": "│",                       "color": "\#565656", "separator_block_width": 0},  ${endif}
+#${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_down_i","full_text": " ",                      "color": "\#A4DC6A", "separator_block_width": 0},  ${endif}
+#${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_down",  "full_text": "${downspeed wlp3s0}",     "color": "\#A4DC6A"},                              ${endif}
+#${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_up_i",  "full_text": " ",                      "color": "\#FF797b", "separator_block_width": 0},  ${endif}${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_up",    "full_text": "${upspeed wlp3s0 }",       "color": "\#FF797b", "separator_block_width": 0},  ${endif}
+
+{ "full_text" : " JasonSorria" , "color" : "\#7996a9" } ,
+#{ "full_text" : "${if_mpd_playing}${mpd_smart 50} ${mpd_elapsed}/${mpd_length}${else}${mpd_status}${endif}" } ,
+
+{"name": "separator", "full_text": "│",                                                                          "color": "\#565656", "separator_block_width": 0},
+#{"name": "kernel",   "full_text": "${kernel}",                                                                  "color": "\#C599BB", "separator_block_width": 4},
+#{ "full_text": " ${exec curl icanhazip.com}"},
+
+{ "full_text" : " root@sorria~","color": "\#BADA55"},
+#${if_match ${exec ~/.config/i3/scripts/getVolume.sh}>0} { "full_text" : " ${exec ~/.config/i3/scripts/getVolume.sh}", "color" : "\#5087ed" }, ${else} { "full_text" : "", "color" : "\#5087ed" }, ${endif}
+
+#{ "full_text" : " ${acpitemp}%" , "color" : "\#B987D9" },
+{ "full_text" : " ${cpu cpu0}%" , "color" : "\#8BC3E7" },
+{ "full_text" : " ${mem}" , "color" : "\#B987D9" },
+#{ "full_text" : " ${fs_used_perc /}%" , "color" : "\#FF9D17" },
+{ "full_text" : " ${battery_percent}%" , "color" : "\#A4DC6A" },
+{ "full_text" : " ${time %m/%d}" , "color" : "\#ff797b" },
+{ "full_text" : " ${time %H:%M}" , "color" : "\#8BADF9" }
+],
+
+
+
+
+

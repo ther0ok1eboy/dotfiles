@@ -1,0 +1,46 @@
+一 管道(无名管道 有名管道)
+   无名管道 int pipe(int pipefd[2]);创建管道,一个单向的数据隧道,用于进程间通信
+		使用pipe创建一个管道 返回两个文件描述符wfd/rfd 
+		创建子进程,子进程复制父进程的PCB,PCB中有fd描述符
+   要使用无名管道实现进程间的通讯,进程之间必须是亲缘关系(父子, 兄弟)
+   有名管道 实质是一个管道文件,进程间使用管道文件进行通讯. 管道文件只是起到进程间通讯的桥梁,size为0,没内容
+       #include <sys/types.h>
+       #include <sys/stat.h>
+       int mkfifo(const char *pathname, mode_t mode); 创建一个有名管道文件
+
+二 信号的基础   信号是软中断(软件模拟的中断机制就是软中断)
+	使用信号实现进程间的异步通讯.
+	kill -l ==> 看信号       kill -信号编号 pid ==> 给指定pid发送信号 
+	信号是发送给进程的信号
+		信号的产生 未决状态(阻塞信号 信号的抵达) 信号的处理(信号捕获)
+	每个进程都有对信号的默认处理函数.
+	默认处理:终止当前函数 SIG_DFL 信号默认处理函数
+	进程对信号的处理函数可以被子进程继承
+  signal(2)
+  	 #include <signal.h>
+       	typedef void (*sighandler_t)(int); 函数指针
+       	sighandler_t signal(int signum, sighandler_t handler);
+
+三 信号的阻塞(blocking)和未决信号(pending)
+       #include <signal.h>
+       int sigemptyset(sigset_t *set);信号集初始化为空
+       int sigfillset(sigset_t *set); 信号集初始化为满
+       int sigaddset(sigset_t *set, int signum);添加指定信号
+       int sigdelset(sigset_t *set, int signum);删除指定信号
+       int sigismember(const sigset_t *set, int signum);测试指定信号是否为信号集成员
+   进程的信号屏蔽字 信号掩码
+       #include <signal.h>
+       /*设置进程对信号的信号掩码*/
+       int sigprocmask(int how, const sigset_t *set, sigset_t *oldset);
+   有些信号在阻塞的时候发送多次,进程解除对其阻塞的时候,只调用一次 ==> 不可靠信号(信号会丢失) 1~31 
+   有些信号在阻塞的时候发送多次,进程解除对其阻塞的时候,调用多次 ==> 可靠信号 34~64 
+   如何检测进程的未决信号?
+       /*examine pending signals*/
+       #include <signal.h>
+       int sigpending(sigset_t *set);
+	
+
+
+
+
+	

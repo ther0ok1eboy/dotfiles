@@ -1,0 +1,14 @@
+//库文件 也叫函数库(静态库lib / 动态库dll)
+//
+//静态库命名规则 lib库名.a
+//制作lib的步骤:
+//gcc -c *.c ==> *.o
+//ar(tar 命令) -r libtext.a *.o  (库名为: text)
+//使用lib:
+//gcc lib_mian.c -Lday_16 -llibtext.a
+//-L + 放lib的路径   -l + 库名
+
+//!!!!!!!!!!!!!!!库名  lib后面的那坨,也没有.a
+
+//nm a.out看到 T 函数,说明以及把函数插进来 ==> 静态连接
+//gcc -c lib.c -v 可以看到从预处理到汇编之间的所有信息

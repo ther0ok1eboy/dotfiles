@@ -1,0 +1,26 @@
+//dll的制作与使用
+// 命名 lib库名.so
+// 把要加入库文件的编译成与位置无光的.o file
+//   gcc -c -fPIC *.c  (-fPIC 只在内存中保持一份,共享)
+// 打包成dll file
+//   gcc -shared -o lib库名.so *.o
+// 使用动态链接生成a.out
+//   和dll一样
+
+// nm a.out 会发现调用的函数ADD和SUB是 U ,也没地址
+// 所以a.out体积较小,在执行a.out的时候
+// 也就是代码加载到内存的时候才会为其分配地址
+
+// 链接器              加载器
+// -L -l 告诉连接器dll的位置
+// 加载器不知道dll位置   ldd a.out 看看(ldd 看加载器)
+// 两个办法
+//   a 使用环境变量LD_LIBRARY_PATH告诉加载器dll位置
+//       LD_LIBRARY_PATH=$LDLIBRARY_PATH: + path of dll
+// 	 expert LD_LIBRARY_PATH
+//   b 使用加载器的默认路径(/usr/lib  or  /lib)连接器默认路径也是这个
+//      
+//	. 也就是说直接gcc main.o -l库名 就可以了
+//	  因为没写 -L 所以链接器会到连接器默认的路径下去找 
+//	. 把dll移动到默认路径下
+
