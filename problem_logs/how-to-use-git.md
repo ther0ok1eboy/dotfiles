@@ -44,7 +44,7 @@
 
 --------
 # some problems when i use git 
-<++>
+
 
 ### repeat input password when your push git code
 

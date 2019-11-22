@@ -3,7 +3,7 @@
 
 - **install PlugInsatll for your vim and install your plugins your like** 
 
-- **and you can go to github or bilibili to choose and install and config your plugins** 
+- **and you can go to github or bilibili to choose and install and configure your plugins** 
 
 - **k for look up file and j fro look down file** 
 
@@ -17,8 +17,11 @@
 - **i will update my problem that i encounter in linux** 
 
 # last but not least
-- **if you favour my configrutions, your can leave your star** 
+- **if you favour my Configurations, your can leave your star** 
 
 - **if your have any questions you can leave your problems or add my QQ(2979613402)**
 
-- **thank you** <++> 
+# for Summaries
+- **this directory include some study notes of my reccent study result and summaris** 
+
+- **thank you**  
