@@ -59,6 +59,9 @@ set showcmd
 set incsearch   
 set hlsearch    
 set ignorecase  
+set clipboard+=unnamed
+
+
 
 noremap k 5k    
 noremap j 5j    
@@ -66,8 +69,8 @@ noremap <LEADER><CR> :nohlsearch<CR>
 noremap z v
 "spelling check keyboard
 map ck :set spell!<CR>
-noremap s [s
-noremap ss ]s
+noremap ss [s
+noremap s ]s
 noremap mo ea<C-x>s<Esc>
 inoremap <C-x> <Esc>ea<C-x>s
 
@@ -93,12 +96,89 @@ map so :tabe<CR>
 map sj :-tabnext<CR>
 map sk :+tabnext<CR>
 
+"Ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+map <F12> gg=G
+"Ctrl+c
+vmap <C-c> "+y
+
 " make markdown notes become html
 " map html :%TOhtml<CR>S
 
 " press space twice to jump next <++>
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
+"some useful function
+:inoremap ( ()<ESC>i
+:inoremap ) <Esc>i()<Esc>i
+:inoremap { {<CR>}<ESC>O
+:inoremap } <Esc>i{}<Esc>i
+:inoremap [ []<ESC>i
+:inoremap ] <Esc>i[]<Esc>i
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
+:inoremap < <><ESC>i
+:inoremap > <Space><Esc>i<><ESC>i
+
+"shell:
+:inoremap ,sh #!/bin/bash<CR><CR>
+"C/C++:
+:inoremap ,cc #include <stdio.h><CR>#include <stdlib.h><CR><CR>
+:inoremap ,cpp #include <iostream><CR><RC>using namespace std;<CR><CR>
+:inoremap ,ma int main(int args, char *argv[]){<CR><Tab><++>return 0;<CR>}<Esc>/<++><CR>:nohlsearch<CR>c4l<CR><UP>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""new file tital:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"first build the *.c, *.cpp, *.sh, *.sh and auto insert file headers
+""autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+""
+""func SetTitle()
+""    "shell:
+""    if &filetype == 'sh'
+""        call setline(1,"\#########################################################################")
+""        call append(line("."), "\# File Name: ".expand("%"))
+""        call append(line(".")+1, "\# Author: sorria")
+""        call append(line(".")+2, "\# mail: sorria1003@gmail.com")
+""        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+""        call append(line(".")+4, "\#########################################################################")
+""        call append(line(".")+5, "\#!/bin/bash")
+""        call append(line(".")+6, "")
+""    else
+""        call setline(1, "/*************************************************************************")
+""        call append(line("."), "    > File Name: ".expand("%"))
+""        call append(line(".")+1, "    > Author: sorria")
+""        call append(line(".")+2, "    > Mail: sorria1003@gmail.com")
+""        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+""        call append(line(".")+4, " ************************************************************************/")
+""        call append(line(".")+5, "")
+""    endif
+""    if &filetype == 'cpp'
+""        call append(line(".")+6, "#include<iostream>")
+""        call append(line(".")+7, "using namespace std;")
+""        call append(line(".")+8, "int main(int argc,char *argv[]){")
+""        call append(line(".")+9, "    ")
+""        call append(line(".")+10,"    return 0;")
+""        call append(line(".")+11, "}")
+""    endif
+""    if &filetype == 'c'
+""        call append(line(".")+6, "#include<stdio.h>")
+""        call append(line(".")+7, "int main(int argc,char *argv[]){")
+""        call append(line(".")+8, "    ")
+""        call append(line(".")+9,"    return 0;")
+""        call append(line(".")+10, "}")
+""    endif
+""    "    if &filetype == 'java'
+""    "        call append(line(".")+6,"public class ".expand("%"))
+""    "        call append(line(".")+7,"")
+""    "    endif
+""    "after build the file, auto locate to file-tail
+""    autocmd BufNewFile * normal G
+""endfunc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ==================================Plugins==============================
 
