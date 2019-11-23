@@ -112,15 +112,15 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 "some useful function
 :inoremap ( ()<ESC>i
-:inoremap ) <Esc>i()<Esc>i
+:inoremap ) <Esc>i<Space>()<Esc>i
 :inoremap { {<CR>}<ESC>O
-:inoremap } <Esc>i{}<Esc>i
+:inoremap } <Esc>i<space>{}<Esc>i
 :inoremap [ []<ESC>i
-:inoremap ] <Esc>i[]<Esc>i
+:inoremap ] <Esc>i<Space>[]<Esc>i
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
-:inoremap < <><ESC>i
-:inoremap > <Space><Esc>i<><ESC>i
+"":inoremap < <><ESC>i
+"":inoremap > <Space><Esc>i<><ESC>i
 
 "shell:
 :inoremap ,sh #!/bin/bash<CR><CR>
