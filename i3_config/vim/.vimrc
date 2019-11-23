@@ -52,7 +52,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set nocompatible
 set number
 set cursorline
-syntax on 
+syntax on
 set wrap        
 set wildmenu   
 set showcmd
@@ -61,12 +61,13 @@ set hlsearch
 set ignorecase  
 set clipboard+=unnamed
 
-
-
-noremap k 5k    
-noremap j 5j    
+noremap K 5k    
+noremap J 5j    
+noremap q h
+noremap e l
 noremap <LEADER><CR> :nohlsearch<CR> 
 noremap z v
+
 "spelling check keyboard
 map ck :set spell!<CR>
 noremap ss [s
