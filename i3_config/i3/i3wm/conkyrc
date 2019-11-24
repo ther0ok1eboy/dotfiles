@@ -12,8 +12,8 @@ cpu_avg_samples 2
 
 TEXT
 [
-{ "full_text" : ${if_up wlp3s0}"   ${upspeed wlp3s0}/s  ${downspeed wlp3s0}/s"${else}""${endif}, "color" : "\#94F397" },
-{ "full_text" : ${if_up eno1}"  ${upspeed enp2s0}/s  ${downspeed enp2s0}/s"${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : ${if_up wlp3s0}" ${upspeed wlp3s0}/s  ${downspeed wlp3s0}/s "${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : ${if_up enp2s0}"  ${upspeed enp2s0}/s  ${downspeed enp2s0}/s"${else}""${endif}, "color" : "\#94F397" },
 
 ${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "separator", "full_text": "│",                       "color": "\#565656", "separator_block_width": 0},  ${endif}
 #${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_down_i","full_text": " ",                      "color": "\#A4DC6A", "separator_block_width": 0},  ${endif}
@@ -31,12 +31,12 @@ ${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "separator", "full_te
 #${if_match ${exec ~/.config/i3/scripts/getVolume.sh}>0} { "full_text" : " ${exec ~/.config/i3/scripts/getVolume.sh}", "color" : "\#5087ed" }, ${else} { "full_text" : "", "color" : "\#5087ed" }, ${endif}
 
 #{ "full_text" : " ${acpitemp}%" , "color" : "\#B987D9" },
-{ "full_text" : " ${cpu cpu0}%" , "color" : "\#8BC3E7" },
-{ "full_text" : " ${mem}" , "color" : "\#B987D9" },
+{ "full_text" : " ${cpu cpu0}%" , "color" : "\#8BC3E7" },
+{ "full_text" : " ${mem}" , "color" : "\#B987D9" },
 #{ "full_text" : " ${fs_used_perc /}%" , "color" : "\#FF9D17" },
-{ "full_text" : " ${battery_percent}%" , "color" : "\#A4DC6A" },
-{ "full_text" : " ${time %m/%d}" , "color" : "\#ff797b" },
-{ "full_text" : " ${time %H:%M}" , "color" : "\#8BADF9" }
+{ "full_text" : " ${battery_percent}%" , "color" : "\#A4DC6A" },
+{ "full_text" : " ${time %m/%d}" , "color" : "\#ff797b" },
+{ "full_text" : " ${time %H:%M}" , "color" : "\#8BADF9" }
 ],
 
 

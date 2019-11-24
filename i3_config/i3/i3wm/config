@@ -36,10 +36,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #exec_always --no-startup-id compton --config /home/sorria/.config/compton/compton.conf
 exec_always variety 
 exec_always fcitx
-exec_always figlet sorria
-exec_always nyancat
+#exec_always figlet sorria
+#exec_always nyancat
 exec_always compton
-exec_always screenkey
+exec_always screenkey --opacity 0.3
 
 #floating_modifie $mod
 
@@ -115,7 +115,7 @@ bindsym $mod+space focus mode_toggle
 # We use variables to avoid repeating the names in multiple places.
 # Icones:             
 set $WS1  "1:1:"
-set $WS2  "2:2:"
+set $WS2  "2:2:"
 set $WS3  "3:3:"
 set $WS4  "4:4:"
 set $WS5  "5:5:"
@@ -150,6 +150,7 @@ assign [class="google-chrome"] $WS2
 assign [class="google-chrome-stable"] $WS2
 assign [class="chrome"] $WS2
 assign [class="vlc"] $WS7
+assign [class="deepin-movie"] $WS7
 assign [class="netease-cloud-music"] $WS6
 #assign [class="Firefox"] $WS2
 
@@ -214,7 +215,8 @@ bindsym $mod+r mode "resize"
 #-------------------------start-applications-----------------------------------------
 bindsym $mod+g exec google-chrome-stable
 #bindsym $mod+o exec alacritty -e ranger
-bindsym $mod+o exec variety
+bindsym $mod+n exec variety -n 
+bindsym $mod+shift+n exec variety -p
 #bindsym $mod+u exec alsamixer
 #bindsys $mod+Shift+i exec xfce4-screenshooter
 #bindsys $mod+I exec deepin-screenshot
@@ -271,7 +273,7 @@ bindsym $mod+m bar mode toggle
   client.background       #2B2C2B
 
 #--------------------------------------i3-gaps---------------------------------------
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 7 
 gaps outer 1
 set $mode_gaps Gaps: (o) outer, (i) inner
