@@ -13,6 +13,11 @@
 - **1. show users:**
 
     `id user1`
+```sh
+id user1
+```
+
+<++>
 
 - **2. add a user:**
 
@@ -63,6 +68,7 @@
 - **4. different permission bewten file and directory:**
 
     for flie: r is read the file/w is write the file/x is you can excute the file
+
     for directory: r is you can browse the file/w is you can create directory or file/x is you can cd to the file 
 
 ## acl contribute permission:

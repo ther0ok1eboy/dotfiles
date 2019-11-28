@@ -20,14 +20,15 @@ ${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "separator", "full_te
 #${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_down",  "full_text": "${downspeed wlp3s0}",     "color": "\#A4DC6A"},                              ${endif}
 #${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_up_i",  "full_text": " ",                      "color": "\#FF797b", "separator_block_width": 0},  ${endif}${if_existing /sys/class/net/wlp3s0/operstate up} {"name": "net_up",    "full_text": "${upspeed wlp3s0 }",       "color": "\#FF797b", "separator_block_width": 0},  ${endif}
 
-{ "full_text" : " JasonSorria" , "color" : "\#7996a9" } ,
+
+{ "full_text" : " JasonSorria" , "color" : "\#7996a9" } ,
 #{ "full_text" : "${if_mpd_playing}${mpd_smart 50} ${mpd_elapsed}/${mpd_length}${else}${mpd_status}${endif}" } ,
 
 {"name": "separator", "full_text": "│",                                                                          "color": "\#565656", "separator_block_width": 0},
 #{"name": "kernel",   "full_text": "${kernel}",                                                                  "color": "\#C599BB", "separator_block_width": 4},
 #{ "full_text": " ${exec curl icanhazip.com}"},
 
-{ "full_text" : " root@sorria~","color": "\#BADA55"},
+{ "full_text" : " root@sorria~","color": "\#BADA55"},
 #${if_match ${exec ~/.config/i3/scripts/getVolume.sh}>0} { "full_text" : " ${exec ~/.config/i3/scripts/getVolume.sh}", "color" : "\#5087ed" }, ${else} { "full_text" : "", "color" : "\#5087ed" }, ${endif}
 
 #{ "full_text" : " ${acpitemp}%" , "color" : "\#B987D9" },

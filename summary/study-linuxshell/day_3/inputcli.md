@@ -1,14 +1,14 @@
-#### cat:
+### cat:
 
 - **show the contents of file** 
 
-#### tee:
+### tee:
     
 - **be similar with cat and save a file** 
 
     `$ ls -l | tee bak.txt` 
 
-#### more:
+### more:
         
 - **if the contents more than this screen to show, show gratually** 
 
@@ -16,20 +16,20 @@
     
     `$ more a.txt` 
 
-#### head && tail:
+### head && tail:
 
 - **show ten row head contents of file or tail contents** 
 
     `$ ll | head -5 //show five row head data` 
 
-#### nl:
+### nl:
 
-- **be similar with cat and show row number** 
+- **be similar with cat and show row number then show detail information** 
 
     `$ ll | nl` 
 
 
-#### test:
+### test:
 
 - **test status of file:** 
 
@@ -45,7 +45,7 @@
 
         -r/-w/-x: if or not can read/write/excute 
         
-        `$ [ -e /home/sorria ] //ture for 0, fail for not 0`  
+        `$ [ -e /home/sorria ] //ture for 1, fail 0`  
 
     - **intger compare** 
 

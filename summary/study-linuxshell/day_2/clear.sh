@@ -9,3 +9,6 @@ date >> rubbish-blog
 cd ..
 mv rubbish/ /tmp
 
+cat "clear successfully" >> ~/clearSuccess.txt
+cat "`date +%Y-%m-%d,%T`" >> ~/clearSuccess.txt
+

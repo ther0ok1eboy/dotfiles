@@ -6,31 +6,32 @@
 
     `crontab -e` 
 
-`` means read oder betwen `` and the value of result of `` will input its ahead value and not have Spece
-    ```shell
-string=`whereis fish`
-echo $string
-```
+    ｀｀ means read oder betwen ｀｀ and the value of result of ｀｀ will input its ahead value and not have Spece
+
+    ```sh
+    string=`whereis fish`
+    echo $string
+    ```
 
 - **"" means bash will explain value in ""** 
 
-```shell
-value=fish
-echo "where is my $value"
-echo "oh my ${value} fish"
-```
+    ```sh
+    value=fish
+    echo "where is my $value"
+    echo "oh my ${value} fish"
+    ```
 - **position values:** 
 
     a position value only receive nine value
 
-    ```shell
-    $ bash a.sh aa bb cc dd ...
+    ```sh
     #!/bin/bash
     echo $1
     echo $2
     echo $3
     ...
     ```
+    `$ bash a.sh aa bb cc dd ...`
 
 - **pre-define value:** 
 

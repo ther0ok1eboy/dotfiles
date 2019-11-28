@@ -1,4 +1,5 @@
-## how to use awk and sed
+## awk:
+
 
 - **awk '{print $0/$1}' file-name** 
 
@@ -10,6 +11,8 @@
 
 
 --------
+
+## sed:
 
 
 - **sed -n '2'p file-name** 
@@ -36,6 +39,7 @@
 
 --------
 
+## uniq:
 
 
 - **uniq -c file-name** 
@@ -48,6 +52,8 @@
 
 
 --------
+
+## sort:
 
 
 - **sort file-name** 
@@ -66,6 +72,7 @@
 
 --------
 
+## split:
 
 
 - **split -3 file-source file-destination** 
