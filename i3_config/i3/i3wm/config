@@ -35,7 +35,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #exec_always --no-startup-id . /home/sorria/.config.i3/pppoe.sh
 #exec_always --no-startup-id compton --config /home/sorria/.config/compton/compton.conf
 exec_always variety 
-exec_always fcitx
+#exec_always fcitx
 #exec_always figlet sorria
 #exec_always nyancat
 exec_always compton
