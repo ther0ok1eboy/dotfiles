@@ -112,11 +112,12 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 "some useful function
 :inoremap ( ()<ESC>i
-:inoremap ) <Esc>i<Space>()<Esc>i
-:inoremap { {<CR>}<ESC>O
-:inoremap } <Esc>i<space>{}<Esc>i
+:inoremap ) <Esc>a()<Esc>i
+"":inoremap { {<CR>}<ESC>i
+:inoremap { {}<ESC>i
+:inoremap } <Esc>a{}<Esc>i
 :inoremap [ []<ESC>i
-:inoremap ] <Esc>i<Space>[]<Esc>i
+:inoremap ] <Esc>a[]<Esc>i
 :inoremap " ""<ESC>i
 :inoremap ' ''<ESC>i
 "":inoremap < <><ESC>i
@@ -129,7 +130,8 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ,cpp #include <iostream><CR><RC>using namespace std;<CR><CR>
 :inoremap ,ma int main(int args, char *argv[]){<CR><Tab><++>return 0;<CR>}<Esc>/<++><CR>:nohlsearch<CR>c4l<CR><UP>
 
-
+""explain for shell
+:inoremap // #===============<CR># <++><CR>#===============<CR><CR><++><Esc>/<++><CR>:nohlsearch<CR>c4l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""new file tital:
