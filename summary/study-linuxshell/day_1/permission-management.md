@@ -17,8 +17,6 @@
 id user1
 ```
 
-<++>
-
 - **2. add a user:**
 
     `useradd user1 //this user belong to other user`
@@ -67,9 +65,9 @@ id user1
 
 - **4. different permission bewten file and directory:**
 
-    for flie: r is read the file/w is write the file/x is you can excute the file
+    for flie: r is read the file; w is write the file; x is you can excute the file
 
-    for directory: r is you can browse the file/w is you can create directory or file/x is you can cd to the file 
+    for directory: r is you can browse the file; w is you can create directory or file; x is you can cd to the file 
 
 ## acl contribute permission:
 
@@ -89,7 +87,7 @@ id user1
 
     `setfacl -b file-name //delete all users's permission form file-name` 
 
-- **4. if you want to remove this file-name, you should modify its father directory's permissiou**    
+- **4. if you want to remove this file-name, you should modify its father directory's permission**    
 
 - **5. inherented father'directory'permission later:** 
 
