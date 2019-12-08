@@ -15,12 +15,17 @@ autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
 autocmd Filetype markdown inoremap ,b <Tab>-<Space> <++> <Esc>F-la
 autocmd Filetype markdown inoremap ( ()<ESC>i
-autocmd Filetype markdown inoremap ) <Esc>i<Space>()<Esc>i
-autocmd Filetype markdown inoremap { {<CR>}<ESC>O
-autocmd Filetype markdown inoremap } <Esc>i<Space>{}<Esc>i
-autocmd Filetype markdown inoremap [ []<ESC>i
-autocmd Filetype markdown inoremap ] <Esc>i<Space>[]<Esc>i
-autocmd Filetype markdown inoremap " ""<ESC>i
+autocmd Filetype markdown inoremap ) <Esc>a()<Esc>i
+
+""autocmd Filetype markdown inoremap { {<CR>}<ESC>i
+autocmd Filetype markdown inoremap ( (<++>) <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ) <Esc>a()<Esc>i
+":inoremap { {<CR>}<ESC>i
+autocmd Filetype markdown inoremap { {<++>} <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap } <Esc>a{}<Esc>i
+autocmd Filetype markdown inoremap [ [<++>] <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ] <Esc>a[]<Esc>i
+autocmd Filetype markdown inoremap " "<++>" <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 autocmd Filetype markdown inoremap ' ''<ESC>i
 
 

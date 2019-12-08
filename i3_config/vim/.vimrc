@@ -67,6 +67,7 @@ noremap q h
 noremap e l
 noremap <LEADER><CR> :nohlsearch<CR> 
 noremap z v
+noremap X c<RIGHT>
 
 "spelling check keyboard
 map ck :set spell!<CR>
@@ -107,18 +108,19 @@ vmap <C-c> "+y
 " make markdown notes become html
 " map html :%TOhtml<CR>S
 
+
 " press space twice to jump next <++>
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 "some useful function
-:inoremap ( ()<ESC>i
+:inoremap ( (<++>) <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ) <Esc>a()<Esc>i
 "":inoremap { {<CR>}<ESC>i
-:inoremap { {}<ESC>i
+:inoremap { {<++>} <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap } <Esc>a{}<Esc>i
-:inoremap [ []<ESC>i
+:inoremap [ [<++>] <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ] <Esc>a[]<Esc>i
-:inoremap " ""<ESC>i
+:inoremap " "<++>" <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ' ''<ESC>i
 "":inoremap < <><ESC>i
 "":inoremap > <Space><Esc>i<><ESC>i
@@ -129,6 +131,9 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ,cc #include <stdio.h><CR>#include <stdlib.h><CR><CR>
 :inoremap ,cpp #include <iostream><CR><RC>using namespace std;<CR><CR>
 :inoremap ,ma int main(int args, char *argv[]){<CR><Tab><++>return 0;<CR>}<Esc>/<++><CR>:nohlsearch<CR>c4l<CR><UP>
+
+
+
 
 ""explain for shell
 :inoremap // #===============<CR># <++><CR>#===============<CR><CR><++><Esc>/<++><CR>:nohlsearch<CR>c4l
