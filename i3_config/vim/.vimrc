@@ -30,9 +30,12 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
 
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
 set number
 set mouse=a
-set encoding=utf-8
 let &t_ut=''
 set expandtab
 set tabstop=4	
@@ -59,8 +62,8 @@ set showcmd
 set incsearch   
 set hlsearch    
 set ignorecase  
-set clipboard+=unnamed
-
+set clipboard=unnamedplus
+"set clipboard+=unnamed
 noremap K 5k    
 noremap J 5j    
 noremap q h
@@ -120,7 +123,7 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap } <Esc>a{}<Esc>i
 :inoremap [ [<++>] <++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ] <Esc>a[]<Esc>i
-:inoremap " "<++>" <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+"":inoremap " "<++>"<++><Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ' ''<ESC>i
 "":inoremap < <><ESC>i
 "":inoremap > <Space><Esc>i<><ESC>i
