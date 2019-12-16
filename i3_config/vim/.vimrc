@@ -111,19 +111,17 @@ vmap <C-c> "+y
 " make markdown notes become html
 " map html :%TOhtml<CR>S
 
-
 " press space twice to jump next <++>
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 "some useful function
-:inoremap ( (<++>) <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+:inoremap ( (<++>) <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ) <Esc>a()<Esc>i
-"":inoremap { {<CR>}<ESC>i
-:inoremap { {<++>} <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+:inoremap { {<++>} <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap } <Esc>a{}<Esc>i
-:inoremap [ [<++>] <++><Esc>/<++><CR>:nohlsearch<CR>c4l
+:inoremap [ [<++>] <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ] <Esc>a[]<Esc>i
-"":inoremap " "<++>"<++><Esc>/<++><CR>:nohlsearch<CR>c4l
+:inoremap " ""<++>""<++><Esc>/"<++>"<CR>:nohlsearch<CR>c6l
 :inoremap ' ''<ESC>i
 "":inoremap < <><ESC>i
 "":inoremap > <Space><Esc>i<><ESC>i
