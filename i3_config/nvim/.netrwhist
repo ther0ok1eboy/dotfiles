@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/sorria/documents/github-local/manjaro_config/problem_logs/postfix+devecot-built-mailserer'
+let g:netrw_dirhist_2='/home/sorria/documents/github-local/manjaro_config/problem_logs/GCP+V2ray+WebSocks+tls-to-surfing'
+let g:netrw_dirhist_1='/home/sorria/.config/fish/conf.d'
