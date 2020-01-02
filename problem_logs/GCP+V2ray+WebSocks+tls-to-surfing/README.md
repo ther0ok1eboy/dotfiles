@@ -220,7 +220,9 @@ $ chown root:root /usr/local/bin/speedtest
 $ speedtest
 ```
 
+### License
 
+**SCTU**
 
 
 ### If you have any problems, you can contact with me and send it to me.

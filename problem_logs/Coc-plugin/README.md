@@ -364,6 +364,10 @@ Do `$ pip3 install flake8` for coding check like that:
 
 Run `$ sudo pacman -S ctags` for function/class/variable list. When your define your function at `C/C++` you can see some function/class/variale list, which is so comvironent.
 
+### License
+
+**SCTU**
+
 --------
 
 ### Q&A
