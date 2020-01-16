@@ -6,7 +6,7 @@ With the growth of Linux user, we can not avoid to not use `vim` and code become
 
 ![](1.gif)
 
-### Content
+### Contents
 
 - [ ] What COC plugin
 

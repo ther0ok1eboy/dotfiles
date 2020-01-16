@@ -1,6 +1,6 @@
 ## Today, i will share how to build your own mail-server by postfix and devecot under CentOS 7.
 
-### First and foremost, some tips you must known:
+### First and foremost, some tips you must know:
 
 - **SMTP(Simple Mail Transfer Protocol): used to send mail, port:25** 
 
