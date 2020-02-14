@@ -42,7 +42,7 @@ The reasons why i recommand this platform are that it will give you one year and
 
 - **Recommand Los Angeles, memory > 1G, CentOS 7.**
 
-![](/images/posts/v2ray/1.PNG) 
+![](1.PNG) 
 
 - **Opent your server firewall and cloud safe group(if you feel trouble you can close firewall), open 22, 80, 443.** 
 
@@ -71,11 +71,11 @@ The reasons why i recommand this platform are that it will give you one year and
 
 **1): Regester a domain and this site it support AliPay, so it is very nice.**
 
-![](/images/posts/v2ray/2.PNG) 
+![](2.PNG) 
 
 **2): Into the interface of Manage Your Domain.** 
 
-![](/images/posts/v2ray/3.PNG) 
+![](3.PNG) 
 
 ### 3. Analysis your domain to your VPS and add CDN and DNSSEC.
 
@@ -85,43 +85,43 @@ The reasons why i recommand this platform are that it will give you one year and
 
 **1): Go to [Cloudflare](https://dash.cloudflare.com/430bb5774e5536405074533cfde78dad/add-site) to analysis your domain for free(you may get trouble like this, do not worried and wait a while).**
 
-![](/images/posts/v2ray/4.PNG)
+![](4.PNG)
 
 **2): The first domain has been analysised but the secend one is not complete, so wait a while.**
 
-![](/images/posts/v2ray/6.PNG) 
+![](6.PNG) 
 
 **3): Add A record for your server.**
 
-![](/images/posts/v2ray/5.PNG)
+![](5.PNG)
 
 **4): In Cloudflare web page, using following two DNS servers to Namesilo web page.**
 
-![](/images/posts/v2ray/7.PNG)
+![](7.PNG)
 
 **5): In Namesilo web page, into interface of Change Nameservers.** 
 
-![](/images/posts/v2ray/8.PNG)
+![](8.PNG)
 
 **6): Change nameservers.**
 
-![](/images/posts/v2ray/10.PNG)
+![](10.PNG)
 
 **7): In Cloudflare web page, into interface of DNS.** 
 
 **8): In Cloudflare web page, find DBSSEC and add its information to Namesilo web page.**
 
-![](/images/posts/v2ray/11.PNG)
+![](11.PNG)
 
-![](/images/posts/v2ray/12.PNG)
+![](12.PNG)
 
 **9): In Namesilo, find DS Records and add some DNSSEC information.**
 
-![](/images/posts/v2ray/9.PNG)
+![](9.PNG)
 
 **10): Match information.**
 
-![](/images/posts/v2ray/13.PNG)
+![](13.PNG)
 
 
 ### 4. Product verification.
@@ -131,7 +131,7 @@ The reasons why i recommand this platform are that it will give you one year and
 
 **Use [FreeSSL](https://freessl.cn/) to product verification for free.**
 
-![](/images/posts/v2ray/14.PNG)
+![](14.PNG)
 
 
 ### 5. Add TXT record for your VPS.
@@ -142,17 +142,17 @@ The reasons why i recommand this platform are that it will give you one year and
 
 **1): Add a TXT record at Cloudflare web page using this information.**
 
-![](/images/posts/v2ray/15.PNG)
+![](15.PNG)
 
 - **After add this information, first to click 1 to check, if the results are similar as following picture(at least two matchs), you can click 2 to continue.**
 
-![](/images/posts/v2ray/17.PNG)
+![](17.PNG)
 
-![](/images/posts/v2ray/16.PNG)
+![](16.PNG)
 
 - **if your steps era right, you will get something are similar as the following picture.**
 
-![](/images/posts/v2ray/18.PNG)
+![](18.PNG)
 
 **2): Copy the conents of your private key into a txt file and rename it to your-domain.key.(such as xxoo.key)**
 
@@ -164,7 +164,7 @@ The reasons why i recommand this platform are that it will give you one year and
 
 **1): Use this [tool](https://v2.ziyls.com/) to auto product json file.**
 
-![](/images/posts/v2ray/19.PNG)
+![](19.PNG)
 
 **2): Click 1 to product JSON file and click 2 to product QR code**
 
@@ -207,7 +207,7 @@ lsmod | grep bbr
 
 - **Startup your V2rayG and configure it, this domain is your pretend address for which i recommand you add a vedio address because your VPS should run always.**
 
-![](/images/posts/v2ray/20.PNG)
+![](20.PNG)
 
 **3): Install V2ray under Linux.(you can see this article to view more details how to configure it)**
 
