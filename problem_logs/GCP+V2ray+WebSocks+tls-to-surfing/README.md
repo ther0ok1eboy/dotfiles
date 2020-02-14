@@ -1,6 +1,13 @@
+---
+layout: post
+title: GCP+V2ray+WebSocks+tls to surfing
+date: 2019-12-20 
+tags: comfortSurfing   
+---
+
 ## Today, i will share how to comfortably surfing by build GCP+V2ray+WebSocks+tls.
 
-## It is sounds difficult, but it is real complex, please pay a attention to following me.
+## It sounds difficult, but it is real complex, please pay a attention to follow me.
 
 ## Content:
 
@@ -20,7 +27,6 @@
 
 ## Let us start.
 
-#
 
 ### 1. You should have a abroad server, i recommend [Google Cloud Platform](https://cloud.google.com/).
 
@@ -28,15 +34,15 @@
 
 --------
 
-**The reasons why i recommand this platform are is that it will give you one year and $300 to use its server for free only need a Visa Card. i believe your all partners who may exist a person has Visa Card. unfortunately, i only recommand [Vultr](http://bwg.yiqimaila.com/vt/).**
+The reasons why i recommand this platform are that it will give you one year and $300 to use its server for free only need a Visa Card. i believe your all partners who may exist a person has Visa Card. unfortunately, i only recommand [Vultr](http://bwg.yiqimaila.com/vt/).
 
-**Configure your VPS:**
+**1): Configure your VPS:**
 
 - **Creat a new one.**
 
 - **Recommand Los Angeles, memory > 1G, CentOS 7.**
 
-![gcp](1.PNG) 
+![](/images/posts/v2ray/1.PNG) 
 
 - **Opent your server firewall and cloud safe group(if you feel trouble you can close firewall), open 22, 80, 443.** 
 
@@ -56,7 +62,6 @@
 
 - **You also see [his blog](https://blog.csdn.net/sxt_zls/article/details/89449843) to get more details**
 
-#
 
 ### 2. You need a international domain,you can buy one at [namesilo](https://www.namesilo.com/account_home.php).
 
@@ -64,15 +69,13 @@
 
 --------
 
-**Regester a domain and this site it support AliPay, so it is very nice.**
+**1): Regester a domain and this site it support AliPay, so it is very nice.**
 
-![p](2.PNG) 
+![](/images/posts/v2ray/2.PNG) 
 
-**Into the interface of Manage Your Domain.** 
+**2): Into the interface of Manage Your Domain.** 
 
-![e](3.PNG) 
-
-#
+![](/images/posts/v2ray/3.PNG) 
 
 ### 3. Analysis your domain to your VPS and add CDN and DNSSEC.
 
@@ -80,47 +83,46 @@
 
 --------
 
-**Go to [Cloudflare](https://dash.cloudflare.com/430bb5774e5536405074533cfde78dad/add-site) to analysis your domain for free(you may get trouble like this, do not worried and wait a while).**
+**1): Go to [Cloudflare](https://dash.cloudflare.com/430bb5774e5536405074533cfde78dad/add-site) to analysis your domain for free(you may get trouble like this, do not worried and wait a while).**
 
-![e](4.PNG)
+![](/images/posts/v2ray/4.PNG)
 
-**The first domain has been analysised but the secend one is not complete, so wait a while.**
+**2): The first domain has been analysised but the secend one is not complete, so wait a while.**
 
-![e](6.PNG) 
+![](/images/posts/v2ray/6.PNG) 
 
-**Add A record for your server.**
+**3): Add A record for your server.**
 
-![e](5.PNG)
+![](/images/posts/v2ray/5.PNG)
 
-**In Cloudflare web page, using following two DNS servers to Namesilo web page.**
+**4): In Cloudflare web page, using following two DNS servers to Namesilo web page.**
 
-![7](7.PNG)
+![](/images/posts/v2ray/7.PNG)
 
-**In Namesilo web page, into interface of Change Nameservers.** 
+**5): In Namesilo web page, into interface of Change Nameservers.** 
 
-![8](8.PNG)
+![](/images/posts/v2ray/8.PNG)
 
-**Change nameservers.**
+**6): Change nameservers.**
 
-![9](10.PNG)
+![](/images/posts/v2ray/10.PNG)
 
-**In Cloudflare web page, into interface of DNS.** 
+**7): In Cloudflare web page, into interface of DNS.** 
 
-**In Cloudflare web page, find DBSSEC and add its information to Namesilo web page.**
+**8): In Cloudflare web page, find DBSSEC and add its information to Namesilo web page.**
 
-![11](11.PNG)
+![](/images/posts/v2ray/11.PNG)
 
-![12](12.PNG)
+![](/images/posts/v2ray/12.PNG)
 
-**In Namesilo, find DS Records and add some DNSSEC information.**
+**9): In Namesilo, find DS Records and add some DNSSEC information.**
 
-![10](9.PNG)
+![](/images/posts/v2ray/9.PNG)
 
-**Match information.**
+**10): Match information.**
 
-![13](13.PNG)
+![](/images/posts/v2ray/13.PNG)
 
-#
 
 ### 4. Product verification.
 
@@ -129,9 +131,8 @@
 
 **Use [FreeSSL](https://freessl.cn/) to product verification for free.**
 
-![14](14.PNG)
+![](/images/posts/v2ray/14.PNG)
 
-#
 
 ### 5. Add TXT record for your VPS.
 
@@ -139,39 +140,39 @@
 
 --------
 
-**Add a TXT record at Cloudflare web page using this information.**
+**1): Add a TXT record at Cloudflare web page using this information.**
 
-![15](15.PNG)
+![](/images/posts/v2ray/15.PNG)
 
 - **After add this information, first to click 1 to check, if the results are similar as following picture(at least two matchs), you can click 2 to continue.**
 
-![17](17.PNG)
+![](/images/posts/v2ray/17.PNG)
 
-![16](16.PNG)
+![](/images/posts/v2ray/16.PNG)
 
 - **if your steps era right, you will get something are similar as the following picture.**
 
-![18](18.PNG)
+![](/images/posts/v2ray/18.PNG)
 
-**Copy the conents of your private key into a txt file and rename it to your-domain.key.(such as xxoo.key)**
+**2): Copy the conents of your private key into a txt file and rename it to your-domain.key.(such as xxoo.key)**
 
-**Copy the conents of your CA into a txt file and rename it to your-domain.pem.(xxoo.pem)**
+**3): Copy the conents of your CA into a txt file and rename it to your-domain.pem.(xxoo.pem)**
 
-**The two file are your veritification end private key.**
+**4): The two file are your veritification end private key.**
 
 ### 6. Output configuration file.
 
-**Use this [tool](https://v2.ziyls.com/) to auto product json file.**
+**1): Use this [tool](https://v2.ziyls.com/) to auto product json file.**
 
-![19](19.PNG)
+![](/images/posts/v2ray/19.PNG)
 
-**Click 1 to product JSON file and click 2 to product QR code**
+**2): Click 1 to product JSON file and click 2 to product QR code**
 
-**If you still follow me to there, you will get a JSON file that is V2ray needs, a KEY file and a PEM file.**
+**3): If you still follow me to there, you will get a JSON file that is V2ray needs, a KEY file and a PEM file.**
 
-### 7. Test with V2ray.
+### 7. Test with V2ray on Window10 and Linux.   
 
-**Configure it again.**
+**1): Entrance your IPS server and configure it again.**
 
 `su root`
 
@@ -198,17 +199,17 @@ lsmod | grep bbr
 
 `systemctl restart v2ray.service` 
 
-**Install V2ray under Window10.**
+**2): Install V2ray under Window10.**
 
 - **Download [V2ray-windows-64.zip](https://github.com/v2ray/v2ray-core/releases) and [V2rayN.zip](https://github.com/2dust/v2rayN/releases).**
 
 - **Unzip the V2rayN.zip and you will get V2rayN.exe which you should put it to the directory of V2ray-windows-64.**
 
-- **Startup your V2ray and configure it, this domain is your pretend address for which i recommand you add a vedio address because your VPS should run always.**
+- **Startup your V2rayG and configure it, this domain is your pretend address for which i recommand you add a vedio address because your VPS should run always.**
 
-![20](20.PNG)
+![](/images/posts/v2ray/20.PNG)
 
-**Install V2ray under Linux.**
+**3): Install V2ray under Linux.(you can see this article to view more details how to configure it)**
 
 - **test speed**
 
@@ -220,14 +221,9 @@ $ chown root:root /usr/local/bin/speedtest
 $ speedtest
 ```
 
-### License
-
-**SCTU**
-
-
 ### If you have any problems, you can contact with me and send it to me.
 
---------------------------------------------------------------- coolshark@sorria-linux.club --------------------------------------------------
+coolshark@sorria-linux.club 
 
---------------------------------------------------------------- jason10032992@gmail.com -------------------------------------------------
+jason10032992@gmail.com
 
