@@ -17,7 +17,7 @@ You may seen my this [article](https://jasonsorria.github.io/2019/12/scure-surfi
 
 **My VPS server information.** 
 
-![](/home/sorria/documents/github-local/github_web/images/posts/v2ray/b.png)
+![](b.png)
 
 ### Quick start:
 
@@ -25,7 +25,7 @@ You may seen my this [article](https://jasonsorria.github.io/2019/12/scure-surfi
 
 Login your VPS server and input`bash <(curl -L -s https://raw.githubusercontent.com/wulabing/V2Ray_ws-tls_bash_onekey/master/install.sh) | tee v2ray_ins.log` and input 1.
 
-![](/home/sorria/documents/github-local/github_web/images/posts/v2ray/a.png) 
+![](a.png) 
 
 In this process, you also need correctly input your domain.
 
@@ -58,20 +58,20 @@ In last article i have written how to configure it.
     - open your Windows client and Export selected server for client configuration and rename it `config.json` 
 
 
-        ![](/home/sorria/documents/github-local/github_web/images/posts/v2ray/c.png)
+        ![](c.png)
 
     -  `cd /etc/v2ray` using this new `config.json` to replace the old `config.json`   
 
     - check status `sudo systemctl status v2ray` 
 
-        ![](/home/sorria/documents/github-local/github_web/images/posts/v2ray/d.png)
+        ![](d.png)
 
 - **6): But you still can not comfortably surfing such as [Google](https://www.google.com/)**
 
 
     - Firefox:
 
-        ![](/home/sorria/documents/github-local/github_web/images/posts/v2ray/e.png)
+        ![](e.png)
 
         the Port is your v2ray Lisent port(if you do not know your port`sudo netstat -pantu | grep v2ray`).
 
