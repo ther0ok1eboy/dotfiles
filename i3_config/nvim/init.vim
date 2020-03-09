@@ -14,6 +14,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 let mapleader=" "
 let g:SnazzyTransparent = 1
 let g:lightline = {
@@ -65,6 +66,9 @@ set hlsearch
 set ignorecase  
 set clipboard=unnamedplus
 "set clipboard+=unnamed
+
+
+
 noremap K 5k    
 noremap J 5j    
 noremap q h
@@ -85,6 +89,7 @@ map W :w<CR>
 map Q :q!<CR>
 map S :wq<CR>
 map shell :r!
+map rg :RnvimrToggle<CR>
 " map os :w !sudo tee % <CR>
 
 " spilling vim windos
@@ -119,7 +124,7 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 "some useful function
 :inoremap ( (<++>) <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ) <Esc>a()<Esc>i
-:inoremap { {<++>} <Esc>/<++><CR>:nohlsearch<CR>c4l
+:inoremap { {<CR><++><CR>} <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap } <Esc>a{}<Esc>i
 :inoremap [ [<++>] <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ] <Esc>a[]<Esc>i
@@ -134,6 +139,7 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 :inoremap ,cc #include <stdio.h><CR>#include <stdlib.h><CR><CR>
 :inoremap ,cpp #include <iostream><CR><RC>using namespace std;<CR><CR>
 :inoremap ,ma int main(int args, char *argv[]){<CR><Tab><++>return 0;<CR>}<Esc>/<++><CR>:nohlsearch<CR>c4l<CR><UP>
+"html"
 
 
 
@@ -206,6 +212,7 @@ Plug 'makerj/vim-pdf'
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Taglist 
 Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
@@ -233,6 +240,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdcommenter'
 noremap C \c
 
+" ranger with flow window
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+
+" Far.vim makes it easier to find and replace text through multiple files.
+Plug 'brooth/far.vim'
+
 call plug#end()
 
 let g:SnazzyTransparent = 1
@@ -243,6 +256,10 @@ Plug 'mbbill/undotree'
 
 " vim startify
 Plug 'mhinz/vim-startify'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -277,9 +294,10 @@ func! CompileRunGcc()
 endfunc
 
 " ===
-" === jekyll preview 
+" === Jekyll preview 
 " ===
-map <F5> :term bash start-serve.sh<CR>
+" Automatically browse your Jekyll article on web browsers.
+map <F5> :term bash start-serve.sh
 
 " ===
 " === NERDTree
@@ -298,11 +316,18 @@ let NERDTreeMapChangeRoot = "y"
 let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 let NERDTreeWinSize=25
-
+" automatically startup NERDTree when open a file using nvim then focus the file instead of nerdtree toggle.
+autocmd vimenter * NERDTree
+autocmd vimenter * NERDTreeFocusToggle
+let g:nerdtree_tabs_smart_startup_focus=2
+" automatically startup NERDTree when open a directory using nvim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " ==
 " == NERDTree-git
 " ==
+" It will show some statuses of file which is github repository using some icons like following that
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -319,6 +344,7 @@ let g:NERDTreeIndicatorMapCustom = {
 " ===
 " === MarkdownPreview
 " ===
+" When you with your md file you will see your contents on web browsers
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -347,12 +373,13 @@ source ~/.vim/snappits.vim
 " ===
 " === vim-table-mode
 " ===
+" It will automatically full up md syntax of table.
 map <LEADER>tm :TableModeToggle<CR>
 
 " ===
 " === coc-key-mapping
 " ===
-
+" It includes many useful language extensions.
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -533,6 +560,15 @@ nmap <leader>rn <Plug>(coc-rename)
 " === Far.vim
 " ===
 noremap <LEADER>f :F  %<left><left>
+"set lazyredraw            " improve scrolling performance when navigating through large results
+"set regexpengine=1        " use old regexp engine
+"set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
+"" shortcut for far.vim find
+"nnoremap <silent> <Find-Shortcut>  :Farf<cr>
+"vnoremap <silent> <Find-Shortcut>  :Farf<cr>
+"" shortcut for far.vim replace
+"nnoremap <silent> <Replace-Shortcut>  :Farr<cr>
+"vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
 
 " ===
 " === Undotree

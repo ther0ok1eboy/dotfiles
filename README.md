@@ -25,4 +25,3 @@
 
 - **if your have any questions you can sent it to my mail-address(coolshark@sorria-linux.club) or add my QQ(2979613402)**
 
-- **pese** 
