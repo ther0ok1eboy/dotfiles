@@ -199,12 +199,33 @@ map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 " ==================================Plugins==============================
 
 call plug#begin('~/.config/nvim/plugged')
+"Vim theme plugs
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'lervag/vimtex'
+let g:airline_theme='simple'
+let g:airline_powerline_fonts               = 1
+let g:airline#extensions#branch#enabled     = 1
+let g:airline#extensions#syntastic#enabled  = 1
+let g:airline_detect_paste                  = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline_detect_modified               = 1
+let g:airline#extensions#tagbar#enabled     = 1
+let g:airline#extensions#tagbar#flags       = 'p'
+
 Plug 'connorholyday/vim-snazzy'
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+let g:solarized_termcolors = 256
+let g:solarized_termtrans  = 1
+let g:solarized_contrast   = "normal"
+let g:solarized_visibility = "low"
+
 Plug 'bling/vim-bufferline'
 "Plug 'liuchengxu/eleline.vim'
 Plug 'makerj/vim-pdf'
+let g:rehash256 = 1
+let g:molokai_original = 1
 
 " error checking 
 " Plug 'w0rp/ale'
@@ -246,24 +267,25 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 " Far.vim makes it easier to find and replace text through multiple files.
 Plug 'brooth/far.vim'
 
-call plug#end()
-
 let g:SnazzyTransparent = 1
-color snazzy
+"color snazzy
+
+"let g:airline#extensions#tabline#enabled = 1
 
 " Undo tree
 Plug 'mbbill/undotree'
 
 " vim startify
 Plug 'mhinz/vim-startify'
-
+    
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-colorscheme snazzy
+"colorscheme snazzy
+colorscheme molokai
 
 
 " Compile function
