@@ -90,7 +90,7 @@ $sudo pacman -S gnome-settings-daemon
 
 **deepin-screenshot:** deepin screen shuter.
 
-**deepin-picker: **a tool for take colors.
+**deepin-picker:** a tool for take colors.
 
 **deepin-screen-recorder:** deepin record screen tool.
 

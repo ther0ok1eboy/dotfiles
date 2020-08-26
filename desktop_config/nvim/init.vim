@@ -8,12 +8,6 @@
 " ===
 " === Auto load for first time uses
 " ===
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
 
 let mapleader=" "
 let g:SnazzyTransparent = 1
@@ -86,7 +80,7 @@ noremap mo ea<C-x>s<Esc>
 inoremap <C-x> <Esc>ea<C-x>s
 
 map W :w<CR>
-map Q :q!<CR>
+map P :q!<CR>
 map S :wq<CR>
 map shell :r!
 map rg :RnvimrToggle<CR>
@@ -232,6 +226,12 @@ Plug 'fadein/vim-FIGlet'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" coc bash languageserver
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+
 " nerd commentater
 Plug 'preservim/nerdcommenter'
 noremap C \c
@@ -282,7 +282,7 @@ func! CompileRunGcc()
     silent! exec "!clear"
     exec "!time python3 %"
   elseif &filetype == 'html'
-    exec "!google-chrome-stable % &"
+    exec "!firefox % &"
   elseif &filetype == 'markdown'
     exec "MarkdownPreview"
   elseif &filetype == 'vimwiki'
@@ -383,15 +383,8 @@ map <LEADER>tm :TableModeToggle<CR>
 " if hidden is not set, TextEdit might fail.
 set hidden
 
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -421,15 +414,21 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"================ useful mapping ===========
+" Use `[g` and `]g` to navigate diagnostics show debug error
+nmap <silent> <LEADER>n <Plug>(coc-diagnostic-prev)
+nmap <silent> <LEADER>m <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+"================ useful mapping ===========
 
 " Use K to show documentation in preview window
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -444,9 +443,6 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -586,6 +582,15 @@ function g:Undotree_CustomMap()
 	nmap <buffer> U 5<plug>UndotreeNextState
 	nmap <buffer> E 5<plug>UndotreePreviousState
 endfunc
+
+
+" ===
+" === coc bash languageserver
+" ===
+"let g:LanguageClient_serverCommands = {
+"    \ 'sh': ['bash-language-server', 'start']
+"    \ }
+"
 "
 "Markers
 "
