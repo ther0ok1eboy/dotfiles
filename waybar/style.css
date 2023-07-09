@@ -1,0 +1,69 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: 'ComicShannsMono Nerd Font';
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: .5s;
+
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip{
+  border-radius:12px;
+  padding:0;
+  margin:6px;
+  box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+  background: shade(alpha(@borders, 0.7), 1);
+}
+
+#workspaces,
+#clock,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power,
+#custom-weather,
+#custom-cava,
+#custom-media,
+#custom-wallpaper,
+#cpu,
+#memory,
+#disk,
+#network,
+#tray {
+    padding: 0 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    background: shade(alpha(@borders, 0.3), 1);
+
+}
+
+
+
+#workspaces button {
+    color: white;
+    background: shade(alpha(@borders, 0.3), 1);
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    color: #fdff00;
+} 
+
+
+
+

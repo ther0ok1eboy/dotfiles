@@ -1,0 +1,36 @@
+
+
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    family: "ComicShannsMono Nerd Font"
+    #style: Regular
+
+  # Bold font face
+  bold:
+    family: "ComicShannsMono Nerd Font"
+    #style: Bold
+
+  # Italic font face
+  italic:
+    family: "ComicShannsMono Nerd Font"
+    #style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    family: "ComicShannsMono Nerd Font"
+    #style: Bold Italic
+
+  # Point size
+  size: 18
+
+  # Offset
+  #offset:
+  #  x: 0
+  #  y: 0
+
+  # Glyph offset
+  #glyph_offset:
+  #  x: 0
+  #  y: 0

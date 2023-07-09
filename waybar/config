@@ -1,0 +1,43 @@
+{
+    "include": "~/.config/waybar/modules",
+    "name": "main-bar",
+    "id": "main-bar",
+    "layer": "top",
+    "exclusive": true,
+    "passthrough": false,
+    "position": "top",
+    "height": "",
+    "width": "",
+    "spacing": -10,
+    "margin": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "fixed-center": true,
+    "modules-left": [
+        "custom/wallpaper",
+        "wlr/workspaces",
+        "custom/weather",
+        "backlight",
+        "custom/media",
+        "custom/cava"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰮯",
+            "default": "󰊠"
+        }
+    }
+}

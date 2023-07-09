@@ -1,0 +1,1 @@
+/home/sorria/.fzf/shell/key-bindings.fish
