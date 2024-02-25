@@ -110,7 +110,7 @@ map <F12> gg=G
 vmap <C-c> "+y
 
 " make markdown notes become html
-" map html :%TOhtml<CR>S
+ map html :%TOhtml<CR>S
 
 " press space twice to jump next <++>
 " map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -131,7 +131,7 @@ vmap <C-c> "+y
 """""new file tital:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "first build the *.c, *.cpp, *.sh, *.sh and auto insert file headers
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+"autocmd BufNewFile,BufRead *.cpp,*.sh,*.java execute ":call SetTitle()"
 
 func SetTitle()
     "shell:
@@ -248,6 +248,9 @@ Plug 'mhinz/vim-startify'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" vim table mode
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 
 call plug#end()
 
@@ -395,5 +398,11 @@ endfunc
 " ===
 " === FZF
 " ===
-
 map ff :FZF<CR>
+
+" ===
+" === vim table mode
+" ===
+noremap <LEADER>vtm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
