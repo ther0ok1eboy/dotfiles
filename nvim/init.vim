@@ -4,10 +4,8 @@
 "   \ V /  | || |  | |  _ <| |___  | |__| |_| | |\  |  _|  | | |_| |
 "    \_/  |___|_|  |_|_| \_\\____|  \____\___/|_| \_|_|   |___\____|
 "
-"
-" ===
-" === Auto load for first time uses
-" ===
+
+" ==================================Editor behavior==============================
 
 let mapleader=" "
 let g:SnazzyTransparent = 1
@@ -59,18 +57,14 @@ set incsearch
 set hlsearch    
 set ignorecase  
 set clipboard=unnamedplus
-"set clipboard+=unnamed
 
-
+" ==================================key binds==============================
 
 noremap K 5k    
 noremap J 5j    
 noremap q h
 noremap e l
 noremap <LEADER><CR> :nohlsearch<CR> 
-"noremap z v
-"noremap X c<RIGHT>
-
 
 "spelling check keyboard
 map ck :set spell!<CR>
@@ -84,7 +78,7 @@ map Q :q!<CR>
 map S :wq<CR>
 map shell :r!
 map rg :RnvimrToggle<CR>
-" map os :w !sudo tee % <CR>
+map os :sudaWrite <CR>
 
 " spilling vim windos
 map sl :set splitright<CR>:vsplit<CR>
@@ -109,11 +103,8 @@ map <F12> gg=G
 "Ctrl+c
 vmap <C-c> "+y
 
-" make markdown notes become html
- map html :%TOhtml<CR>S
-
 " press space twice to jump next <++>
-" map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
 "some useful function
 :inoremap ( (<++>) <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -124,51 +115,12 @@ vmap <C-c> "+y
 :inoremap ] <Esc>a[]<Esc>i
 ":inoremap " ""<++>""<++><Esc>/"<++>"<CR>:nohlsearch<CR>c6l
 :inoremap ' ''<ESC>i
-"":inoremap < <><ESC>i
-"":inoremap > <Space><Esc>i<><ESC>i
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""new file tital:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"first build the *.c, *.cpp, *.sh, *.sh and auto insert file headers
-"autocmd BufNewFile,BufRead *.cpp,*.sh,*.java execute ":call SetTitle()"
-
-func SetTitle()
-    "shell:
-    if &filetype == 'sh'
-        call setline(1,"\#########################################################################")
-        call append(line("."), "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: sorria")
-        call append(line(".")+2, "\# mail: jason1003@gmail.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
-    endif
-    if &filetype == 'cpp'
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "int main(int argc,char *argv[]){")
-        call append(line(".")+9, "    ")
-        call append(line(".")+10,"    return 0;")
-        call append(line(".")+11, "}")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "int main(int argc,char *argv[]){")
-        call append(line(".")+8, "    ")
-        call append(line(".")+9,"    return 0;")
-        call append(line(".")+10, "}")
-    endif
-        "after build the file, auto locate to file-tail
-    autocmd BufNewFile * normal G
-endfunc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ==================================Plugins==============================
 
 call plug#begin('~/.config/nvim/plugged')
-"Vim theme plugs
+
+" Vim theme plugs
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lervag/vimtex'
@@ -191,13 +143,10 @@ let g:solarized_contrast   = "normal"
 let g:solarized_visibility = "low"
 
 Plug 'bling/vim-bufferline'
-"Plug 'liuchengxu/eleline.vim'
+" Plug 'liuchengxu/eleline.vim'
 Plug 'makerj/vim-pdf'
 let g:rehash256 = 1
 let g:molokai_original = 1
-
-" error checking 
-" Plug 'w0rp/ale'
 
 " File navigation
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -210,14 +159,12 @@ map T :Tagbar<CR>
 
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'vimwiki/vimwiki'
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 Plug 'ryanoasis/vim-devicons'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 " Bookmarks
 Plug 'kshenoy/vim-signature'
-
 
 " Dependencies
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -235,9 +182,6 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'brooth/far.vim'
 
 let g:SnazzyTransparent = 1
-"color snazzy
-
-"let g:airline#extensions#tabline#enabled = 1
 
 " Undo tree
 Plug 'mbbill/undotree'
@@ -252,11 +196,12 @@ Plug 'junegunn/fzf.vim'
 " vim table mode
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
 
+" save file with root permission (map as the key os)
+Plug 'lambdalisue/suda.vim'
+
 call plug#end()
 
 colorscheme snazzy
-"colorscheme molokai
-
 
 " Compile function
 map run :call CompileRunGcc()<CR>
@@ -265,12 +210,6 @@ func! CompileRunGcc()
   if &filetype == 'c'
     exec "!g++ % -o %<"
     exec "! ./%<"
-  elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
-    exec "! ./%<"
-  elseif &filetype == 'java'
-    exec "!javac %"
-    exec "!time java %<"
   elseif &filetype == 'sh'
     :! bash %
   elseif &filetype == 'python'
@@ -279,11 +218,11 @@ func! CompileRunGcc()
   elseif &filetype == 'html'
     exec "!firefox % &"
   elseif &filetype == 'markdown'
-    exec "MarkdownPreview"
-  elseif &filetype == 'vimwiki'
-    exec "MarkdownPreview"
+    exec "InstantMarkdownPreview"
   endif
 endfunc
+
+" ==================================plug behavior==============================
 
 " ===
 " === NERDTree
@@ -327,31 +266,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ }
 
 " ===
-" === MarkdownPreview
+" === vim instant markdown
 " ===
-" When you with your md file you will see your contents on web browsers
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_command_for_global = 0
-let g:mkdp_open_to_the_world = 0
-let g:mkdp_open_ip = ''
-let g:mkdp_browser = 'google-chrome-stable'
-let g:mkdp_echo_preview_url = 0
-let g:mkdp_browserfunc = ''
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1
-    \ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
+let g:instant_markdown_slow = 0
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_autoscroll = 1
 
 " ===
 " === some keys
@@ -404,5 +323,6 @@ map ff :FZF<CR>
 " === vim table mode
 " ===
 noremap <LEADER>vtm :TableModeToggle<CR>
-"let g:table_mode_disable_mappings = 1
-let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+let g:table_mode_corner='|'
+
+
