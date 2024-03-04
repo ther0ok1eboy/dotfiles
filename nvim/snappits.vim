@@ -31,6 +31,7 @@ autocmd Filetype markdown inoremap ' ''<ESC>i
 " some keys for html:
 autocmd Filetype html inoremap ,a <a href="<++>"><++></a><Esc>/<++><CR>:nohlsearch<CR>c4l
 autocmd Filetype html inoremap ,p <img src="<++>" <++> /><Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype html inoremap ,ht <!DOCTYPE html><CR><html lang="en"><CR><head><CR><Tab><meta charset="UTF-8"><CR><meta name="viewport" content="width=device-width, initial-scale=1.0"><CR><title><++></title><CR></head><CR><body><CR><++><CR></body><CR></html><Esc>/<++><CR>:nohlsearch<CR>c4l
 
 " some keys for c:
 autocmd Filetype c inoremap ,cc #include <stdio.h><CR>#include <stdlib.h><CR><CR>
