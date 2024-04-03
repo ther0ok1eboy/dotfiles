@@ -13,7 +13,7 @@ tooltip=" $player_status  $duration   $artist" || \
 tooltip=" $player_status  $duration   $artist"
 
 if [ "$player_name" == "spotify" ]; then
-    echo "TODO"
+    echo "{\"text\":\" ${title}\", \"tooltip\":\"${tooltip}\"}"
 elif [ "$player_name" == "netease-cloud-music" ]; then
     echo "{\"text\":\"󰫔 ${title}\", \"tooltip\":\"${tooltip}\"}"
 fi

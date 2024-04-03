@@ -1,10 +1,3 @@
-//                   __ _       
-//   ___ ___  _ __  / _(_) __ _ 
-//  / __/ _ \| '_ \| |_| |/ _` |
-// | (_| (_) | | | |  _| | (_| |
-//  \___\___/|_| |_|_| |_|\__, |
-//                        |___/ 
-
 {
     "include": "~/.config/waybar/modules",
     "name": "main-bar",
@@ -23,10 +16,9 @@
     "margin-right": 0,
     "fixed-center": true,
     "modules-left": [
-        "cpu",
+        "custom/wallpaper",
         "hyprland/workspaces",
         "custom/weather",
-        "backlight",
         "custom/media",
         "custom/cava"
     ],
@@ -34,19 +26,14 @@
         "clock"
     ],
     "modules-right": [
-        "custom/wave",
-        "network",
-        "pulseaudio",
-        "battery",
         "tray",
         "custom/power"
     ],
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "active": "󰮯",
-            "default": "󰊠"
+            "active": "🌟",
+            "default": "🎁"
         }
     }
 }
-

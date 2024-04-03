@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 temperature_conv(){
-	echo "($1-32)/1.8" | bc
+    if [[ $1 -gt 40 ]] || [[ $1 -lt 0 ]] 
+    then
+	    echo "($1-32)/1.8" | bc
+        exit
+    fi
+        echo $1
 }
 
 text=$(curl -s "https://wttr.in/$1?format=%c+%f")
@@ -11,7 +16,7 @@ then
     text=$(echo "$text" | sed -E "s/\s+/ /g")
     weather_icon=$(echo "$text" | sed -E "s/\s+/ /g" | awk '{print $1}')
     temperature=$(echo "$text" | tr -c '[:digit:]' ' ' | sed -E "s/\s+//g")
-    #temperature=$(temperature_conv $temperature)
+    temperature=$(temperature_conv $temperature)
     tooltip=$(curl -s "https://wttr.in/$1?format=%l:+%C+%c+%t+%w")
     if [[ $? == 0 ]]
     then

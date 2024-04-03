@@ -14,7 +14,7 @@ dict="s/;//g;"
 i=0
 while [ $i -lt ${#bar} ]
 do
-    dict="${dict}s/$i/${bar:$i:1}/g;"
+    dict="${dict}s/$i/${bar:$i:1}./g;"
     i=$((i=i+1))
 done
 
@@ -29,7 +29,7 @@ mkfifo $pipe
 config_file="/tmp/waybar_cava_config"
 echo "
 [general]
-bars = 12
+bars = 6
 [output]
 method = raw
 raw_target = $pipe
@@ -44,3 +44,4 @@ cava -p $config_file &
 while read -r cmd; do
     echo $cmd | sed $dict
 done < $pipe
+

@@ -1,3 +1,12 @@
+/* 
+*      _         _      
+*  ___| |_ _   _| | ___ 
+* / __| __| | | | |/ _ \
+* \__ \ |_| |_| | |  __/
+* |___/\__|\__, |_|\___|
+*          |___/        
+*/ 
+
 * {
     border: none;
     border-radius: 0;
@@ -22,7 +31,7 @@ tooltip{
   padding:0;
   margin:6px;
   box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
-  background: shade(alpha(@borders, 0.7), 1);
+  background: shade(alpha(@borders, 0.62), 1);
 }
 
 #workspaces,
@@ -35,6 +44,7 @@ tooltip{
 #custom-cava,
 #custom-media,
 #custom-wallpaper,
+#custom-wave,
 #cpu,
 #memory,
 #disk,
@@ -42,17 +52,25 @@ tooltip{
 #tray {
     padding: 0 10px;
     border-radius: 10px;
+    border: solid #595959 3px;
     background-color: transparent;
-    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
-    color: white;
-    background: shade(alpha(@borders, 0.3), 1);
+    background: shade(alpha(@borders, 0.62), 1);
 
 }
 
+#cpu {
+    color: #1793d1;
+    font-size: 30px;
+    padding-left: 10;
+    padding-right: 16;
+} 
 
+#custom-cava {
+    color: #b5e8df
+} 
 
 #workspaces button {
     color: white;

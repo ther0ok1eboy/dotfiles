@@ -15,9 +15,9 @@ case $chosen in
     $option1)
         loginctl terminate-user $(whoami);;
     $option2)
-	    # TODO;;
+	killall wayfire;;
     $option3)
-	    # TODO;;
+	killall wayfire;;
     $option4)
-	# TODO;;
+	killall wayfire;;
 esac
