@@ -1,4 +1,4 @@
-function neofetch --wraps=/home/sorria/.config/neofetch/theme.sh --description 'alias neofetch /home/sorria/.config/neofetch/theme.sh'
-  /home/sorria/.config/neofetch/theme.sh $argv
+function neofetch --wraps='~/Documents/github/NeoCat/quickStart.sh' --description 'alias neofetch ~/Documents/github/NeoCat/quickStart.sh'
+  ~/Documents/github/NeoCat/quickStart.sh $argv
         
 end
