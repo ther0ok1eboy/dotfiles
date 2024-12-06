@@ -1,3 +1,0 @@
-# Effect
-
-![show](effect.png)

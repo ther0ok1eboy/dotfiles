@@ -7,8 +7,8 @@
 # : Flavor {{{
 
 [flavor]
-#use = "catppuccin-frappe"
-use = "kanagawa"
+use = "catppuccin-frappe"
+#use = "kanagawa"
 # : }}}
 
 # : Manager {{{
