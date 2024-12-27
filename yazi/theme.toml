@@ -7,11 +7,10 @@
 # : Flavor {{{
 
 [flavor]
-use = "catppuccin-frappe"
-#use = "kanagawa"
-# : }}}
+dark  = "catppuccin-mocha"
+light = "catppuccin-mocha"
 
-# : Manager {{{
+# : }}}
 
 [manager]
 cwd = { fg = "cyan" }

@@ -9,7 +9,7 @@ sort_sensitive = false
 sort_reverse 	 = false
 sort_dir_first = true
 sort_translit  = false
-linemode       = "size"
+linemode       = "size_and_mtime"
 show_hidden    = false
 show_symlink   = true
 scrolloff      = 5
@@ -99,6 +99,19 @@ suppress_preload = false
 fetchers = [
 	# Mimetype
 	{ id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
+]
+spotters = [
+	{ name = "*/", run = "folder" },
+	# Code
+	{ mime = "text/*", run = "code" },
+	{ mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
+	# Image
+	{ mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
+	{ mime = "image/*", run = "image" },
+	# Video
+	{ mime = "video/*", run = "video" },
+	# Fallback
+	{ name = "*", run = "file" },
 ]
 preloaders = [
 	# Image
@@ -212,22 +225,4 @@ sort_translit  = false
 
 [log]
 enabled = false
-
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*"
-run  = "git"
-
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*/"
-run  = "git"
-
-[[plugin.prepend_fetchers]]
-id   = "mime"
-if   = "!mime"
-name = "*"
-run  = "mime-ext"
-prio = "high"
-
 

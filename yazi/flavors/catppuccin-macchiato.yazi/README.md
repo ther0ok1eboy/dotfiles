@@ -3,7 +3,7 @@
 </div>
 
 <h3 align="center">
-    Kanagawa Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
+	Catppuccin Macchiato Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
 </h3>
 
 ## 👀 Preview
@@ -12,17 +12,19 @@
 
 ## 🎨 Installation
 
-```bash
-ya pack -a dangooddd/kanagawa
+```sh
+ya pack -a yazi-rs/flavors:catppuccin-macchiato
 ```
 
 ## ⚙️ Usage
 
-Add these lines to your `theme.toml` configuration file to use it:
+Add these lines to your `theme.toml` to set this flavor as your _dark_ flavor:
 
 ```toml
 [flavor]
-use = "kanagawa"
+use = "catppuccin-macchiato"
+# For upcoming Yazi 0.4 (nightly version):
+dark = "catppuccin-macchiato"
 ```
 
 ## 📜 License

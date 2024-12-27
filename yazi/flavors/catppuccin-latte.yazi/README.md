@@ -3,7 +3,7 @@
 </div>
 
 <h3 align="center">
-	Catppuccin Frappe Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
+	Catppuccin Latte Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
 </h3>
 
 ## 👀 Preview
@@ -13,18 +13,18 @@
 ## 🎨 Installation
 
 ```sh
-ya pack -a yazi-rs/flavors:catppuccin-frappe
+ya pack -a yazi-rs/flavors:catppuccin-latte
 ```
 
 ## ⚙️ Usage
 
-Add these lines to your `theme.toml` to set this flavor as your _dark_ flavor:
+Add these lines to your `theme.toml` to set this flavor as your _light_ flavor:
 
 ```toml
 [flavor]
-use = "catppuccin-frappe"
+use = "catppuccin-latte"
 # For upcoming Yazi 0.4 (nightly version):
-dark = "catppuccin-frappe"
+light = "catppuccin-latte"
 ```
 
 ## 📜 License

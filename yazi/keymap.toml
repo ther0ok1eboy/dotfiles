@@ -46,13 +46,9 @@ keymap = [
 	{ on = "K", run = "seek -5", desc = "Seek up 5 units in the preview" },
 	{ on = "J", run = "seek 5",  desc = "Seek down 5 units in the preview" },
 
-	# Selection
-	{ on = "<Space>", run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
-#	{ on = "v",       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
-#	{ on = "V",       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = "v",   run = "select_all --state=none",            desc = "Select all files" },
-#	{ on = "<C-a>",   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = "<C-r>",   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+    # Toggle
+	{ on = "<Space>", run = [ "toggle", "arrow 1" ], desc = "Toggle the current selection state" },
+	{ on = "v",   run = "toggle_all",            desc = "Invert selection of all files" },
 
 	# Operation
 	{ on = "o",         run = "open",                        desc = "Open selected files" },
@@ -82,13 +78,16 @@ keymap = [
 #	{ on = "z",         run = "plugin zoxide",               desc = "Jump to a directory via zoxide" },
 	{ on = "f",         run = "plugin fzf",                  desc = "Jump to a file/directory via fzf" },
 
-	# Linemode
-	{ on = [ "m", "s" ], run = "linemode size",        desc = "Linemode: size" },
-	{ on = [ "m", "p" ], run = "linemode permissions", desc = "Linemode: permissions" },
-	{ on = [ "m", "b" ], run = "linemode btime",       desc = "Linemode: btime" },
-	{ on = [ "m", "m" ], run = "linemode mtime",       desc = "Linemode: mtime" },
-	{ on = [ "m", "o" ], run = "linemode owner",       desc = "Linemode: owner" },
-	{ on = [ "m", "n" ], run = "linemode none",        desc = "Linemode: none" },
+#	# Linemode
+#	{ on = [ "m", "s" ], run = "linemode size",        desc = "Linemode: size" },
+#	{ on = [ "m", "p" ], run = "linemode permissions", desc = "Linemode: permissions" },
+#	{ on = [ "m", "b" ], run = "linemode btime",       desc = "Linemode: btime" },
+#	{ on = [ "m", "m" ], run = "linemode mtime",       desc = "Linemode: mtime" },
+#	{ on = [ "m", "o" ], run = "linemode owner",       desc = "Linemode: owner" },
+#	{ on = [ "m", "n" ], run = "linemode none",        desc = "Linemode: none" },
+
+	# Spotting
+	{ on = "<Tab>", run = "spot", desc = "Spot hovered file" },
 
 	# Copy
 #	{ on = [ "c", "p" ], run = "copy path",             desc = "Copy the file path" },
@@ -175,13 +174,39 @@ keymap = [
 	{ on = "<F1>", run = "help", desc = "Open help" },
 ]
 
-[select]
+[spot]
 
 keymap = [
-	{ on = "<Esc>",   run = "close",          desc = "Cancel selection" },
-	{ on = "<C-[>",   run = "close",          desc = "Cancel selection" },
-	{ on = "<C-c>",   run = "close",          desc = "Cancel selection" },
-	{ on = "<Enter>", run = "close --submit", desc = "Submit the selection" },
+	{ on = "<Esc>", run = "close", desc = "Close the spot" },
+	{ on = "<C-[>", run = "close", desc = "Close the spot" },
+	{ on = "<C-c>", run = "close", desc = "Close the spot" },
+	{ on = "<Tab>", run = "close", desc = "Close the spot" },
+
+	{ on = "k", run = "arrow -1", desc = "Move cursor up" },
+	{ on = "j", run = "arrow 1",  desc = "Move cursor down" },
+	{ on = "h", run = "swipe -1", desc = "Swipe to the next file" },
+	{ on = "l", run = "swipe 1",  desc = "Swipe to the previous file" },
+
+	{ on = "<Up>",    run = "arrow -1", desc = "Move cursor up" },
+	{ on = "<Down>",  run = "arrow 1",  desc = "Move cursor down" },
+	{ on = "<Left>",  run = "swipe -1", desc = "Swipe to the next file" },
+	{ on = "<Right>", run = "swipe 1",  desc = "Swipe to the previous file" },
+
+	# Copy
+	{ on = [ "c", "c" ], run = "copy cell", desc = "Copy selected cell" },
+
+	# Help
+	{ on = "~",    run = "help", desc = "Open help" },
+	{ on = "<F1>", run = "help", desc = "Open help" },
+]
+
+[pick]
+
+keymap = [
+	{ on = "<Esc>",   run = "close",          desc = "Cancel pick" },
+	{ on = "<C-[>",   run = "close",          desc = "Cancel pick" },
+	{ on = "<C-c>",   run = "close",          desc = "Cancel pick" },
+	{ on = "<Enter>", run = "close --submit", desc = "Submit the pick" },
 
 	{ on = "k", run = "arrow -1", desc = "Move cursor up" },
 	{ on = "j", run = "arrow 1",  desc = "Move cursor down" },

@@ -17,7 +17,7 @@ Add this to your `~/.config/yazi/yazi.toml`:
 ```toml
 [[plugin.prepend_fetchers]]
 id   = "mime"
-if   = "!mime"
+if   = "!(mime|dummy)"
 name = "*"
 run  = "mime-ext"
 prio = "high"
@@ -31,13 +31,13 @@ You can also customize it in your `~/.config/yazi/init.lua` with:
 require("mime-ext"):setup {
 	-- Expand the existing filename database (lowercase), for example:
 	with_files = {
-		makefile = "text/x-makefile",
+		makefile = "text/makefile",
 		-- ...
 	},
 
 	-- Expand the existing extension database (lowercase), for example:
 	with_exts = {
-		mk = "text/x-makefile",
+		mk = "text/makefile",
 		-- ...
 	},
 
@@ -50,5 +50,8 @@ require("mime-ext"):setup {
 ## TODO
 
 - Add more file types (PRs welcome!).
-- Eliminating `x-` as part of Yazi v0.4 as it's discouraged as per [rfc6838#section-3.4](https://datatracker.ietf.org/doc/html/rfc6838#section-3.4)
 - Compress mime-type tables.
+
+## License
+
+This plugin is MIT-licensed. For more information check the [LICENSE](LICENSE) file.
