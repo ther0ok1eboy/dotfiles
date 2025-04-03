@@ -1,0 +1,18 @@
+configuration{
+    modi: "run,drun,window";
+    icon-theme: "oomox-Palenight";
+    show-icons: true;
+    terminal: "kitty";
+    kb-cancel: "Caps_Lock";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 󰕰  Window";
+    sidebar-mode: true;
+}
+
+@theme "catppuccin-mocha"
+
