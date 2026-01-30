@@ -10,4 +10,5 @@ return {
   { "stevearc/aerial.nvim", enabled = false },
   { "nvim-telescope/telescope.nvim", enabled = false },
   { "monaqa/dial.nvim", enabled = false },
+  { "nvim-mini/mini.nvim", enabled = false },
 }

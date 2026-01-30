@@ -34,7 +34,10 @@ map("n", "<A-j>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<A-k>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Opt
-map("n", "Q", "<cmd>q!<cr>", { desc = "Quit without save" })
+map("n", "Q", "<cmd>q!<cr><cmd>q!<cr>", { desc = "Quit without save and quit neo-tree" })
 
 -- Vim table mode
 map("n", "<leader>tm", "<cmd>TableModeToggle<cr>", { desc = "start vim table mode" })
+
+-- Neo tree
+-- map("n", "t", "<cmd>Neotree toggle<cr>", { desc = "show neo-tree" })
