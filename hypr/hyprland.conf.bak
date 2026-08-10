@@ -31,14 +31,15 @@ exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CUR
 #exec-once = copyq --start-server
 exec-once = wl-paste --type text --watch cliphist store # Stores only text data
 exec-once = wl-paste --type image --watch cliphist store # Stores only image data
-exec-once = swww-daemon 
+exec-once = awww-daemon 
 exec-once = mako
 exec-once = fcitx5
 exec-once = nm-applet
 exec-once = waybar
 exec-once = clash-verge
-exec-once = ~/.config/waybar/scripts/wallpaper-engine.sh 600
-exec-once = ~/.config/waybar/scripts/waybar-refresh.sh 600
+#exec-once = ~/.config/waybar/scripts/wallpaper-engine.sh 600
+exec-once = ~/.config/waybar/scripts/waybar-refresh.sh 999
+exec-once = ~/.config/waybar/scripts/live-wallpaper-engine.sh
 exec-once = ~/.config/hypr/clipboard-sync.sh
 
 ###################
@@ -81,7 +82,7 @@ bind = $mainMod, F12, exec , grim -o eDP-1
 
 # open clipboard manager
 bind = $mainMod, C, exec, cliphist list | fuzzel --dmenu --config ~/.config/fuzzel/fuzzel_cliphist.ini | cliphist decode | wl-copy 
-# bind = $mainMod, C, exec, copyq show
+#bind = $mainMod, C, exec, copyq show
 # bind = $mainMod, C, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
 
 # Screenshot for text recognition and copy to clipboard
@@ -223,20 +224,17 @@ animations {
 
     bezier = myBezier, 0.05, 0.9, 0.1, 1.1
 
-    animation = windows, 1, 10, myBezier, slide
-    animation = windowsOut, 1, 10, myBezier, slide
-    animation = border, 1, 10, default
-    animation = borderangle, 1, 8, default
-    animation = fade, 1, 8, default
-    animation = workspaces, 1, 10, myBezier
+    animation = windows, 1, 10, myBezier, slidefade 20%
+    animation = windowsOut, 1, 10, myBezier, slidefade 20%
+    animation = workspaces, 1, 10, myBezier, slide
 
 }
 
 # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-dwindle {
-    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-    preserve_split = true # You probably want this
-}
+#dwindle {
+#    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+#    preserve_split = true # You probably want this
+#}
 
 # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
 master {
@@ -268,6 +266,9 @@ input {
 
     touchpad {
         natural_scroll = false
+        tap-to-click = true
+        drag_lock = true
+
     }
 
     kb_options = caps:swapescape
@@ -304,28 +305,9 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 ### WINDOWS AND WORKSPACES ###
 ##############################
 
-#windowrule = float, class:com-group_finity-mascot-Main
-#windowrule = noblur, class:com-group_finity-mascot-Main
-#windowrule = nofocus, class:com-group_finity-mascot-Main
-#windowrule = noshadow, class:com-group_finity-mascot-Main
-#windowrule = noborder, class:com-group_finity-mascot-Main
-
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
-# Example windowrule v1
-# windowrule = float, ^(kitty)$
-
-# Example windowrule v2
-# windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-
-# Ignore maximize requests from apps. You'll probably like this.
-# windowrulev2 = suppressevent maximize, class:.*
-
-# 让所有 Java 窗口浮动，避免焦点问题
-# windowrulev2 = float, class:^(java.*)$
-# windowrulev2 = noanim, class:^(java.*)$
-# windowrulev2 = noborder, class:^(java.*)$
-
-# Fix some dragging issues with XWayland
-# windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+windowrule = float 1, size 1000 600, match:class com.github.hluk.copyq
+windowrule = float 1, size 1000 600, match:class clash-verge
+#windowrule = float 1, center 1, size 1000 600, match:class kitty
