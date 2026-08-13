@@ -6,6 +6,13 @@
 //                                         
 
 {
+"hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+        "active": "󰮯 ",
+        "default": "󰊠 "
+    }
+},
 "custom/media": {
     "format": "{}",
     "return-type": "json",
@@ -18,13 +25,13 @@
   "network": {
 	"interval": 5,
     "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-ethernet": " enp2s0",
-    "format-linked": " {ifname} (No IP)",
+    "format-ethernet": "  enp2s0",
+    "format-linked": "  {ifname} (No IP)",
     "format-disconnected": "󱚼  Disconnected",
     "format-disabled": "󰖪  Disabled",
     "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
     "tooltip": false,
-    "max-length": 50
+    "max-length": 10
   },
   "backlight": {
     "tooltip": false,
@@ -86,13 +93,15 @@
     "format": "󰣇 ",
     "max-length": 10,
     "tooltip": true,
-    "on-click": "sleep 0.1 && $HOME/.config/waybar/scripts/background-changer.sh",
+    "on-click": "sleep 0.1 && $HOME/.config/waybar/scripts/wallpaper.sh",
   },
   "custom/power": {
     "format": "  ",
-    "tooltip": false,
+    "exec": "$HOME/.config/waybar/scripts/todo-list.sh",
+    "tooltip": true,
+    "interval": 10,
+    "return-type": "json",
     "on-click": "sleep 0.1 && $HOME/.config/waybar/scripts/powermenu.sh 2> /dev/null",
-    "interval": 60
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -110,6 +119,7 @@
       ]
     },
     "tooltip": false,
+    "scroll-step": 1,
     "on-click": "sleep 0.1 && pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "sleep 0.1 && pavucontrol"
   },
@@ -121,8 +131,8 @@
   "custom/weather": {
     "format": "{}",
     "return-type": "json",
-    "exec": "$HOME/.config/waybar/scripts/weather.sh 'Shanghai' 2> /dev/null",
-    "interval": 60,
+    "exec": "$HOME/.config/waybar/scripts/weather.sh 2> /dev/null",
+    "interval": 600,
     "tooltip": true
   },
   "custom/cava": {
@@ -132,7 +142,7 @@
   },
   "custom/wave": {
     "format": "{}",
-    "exec": "$HOME/.config/waybar/scripts/wave.sh",
+    "exec": "$HOME/.config/waybar/scripts/pacman.sh",
     "tooltip": false
   }
 }

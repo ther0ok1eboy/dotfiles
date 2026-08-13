@@ -40,13 +40,6 @@
         "battery",
         "tray",
         "custom/power"
-    ],
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "󰮯",
-            "default": "󰊠"
-        }
-    }
+    ]
 }
 

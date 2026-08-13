@@ -1,29 +1,104 @@
 #!/usr/bin/env bash
 
-temperature_conv(){
-    if [[ $1 -gt 40 ]] || [[ $1 -lt 0 ]] 
-    then
-	    echo "($1-32)/1.8" | bc
-        exit
-    fi
-        echo $1
-}
+CACHE="$HOME/.config/waybar/scripts/weather_cache/weather.json"
+CACHE_TIME=600 # 缓存有效期：600 秒
 
-text=$(curl -s "https://wttr.in/$1?format=%c+%f")
+# 创建缓存目录
+mkdir -p "$(dirname "$CACHE")"
 
-if [[ $? == 0 ]]
-then
-    text=$(echo "$text" | sed -E "s/\s+/ /g")
-    weather_icon=$(echo "$text" | sed -E "s/\s+/ /g" | awk '{print $1}')
-    temperature=$(echo "$text" | tr -c '[:digit:]' ' ' | sed -E "s/\s+//g")
-    temperature=$(temperature_conv $temperature)
-    tooltip=$(curl -s "https://wttr.in/$1?format=%l:+%C+%c+%t+%w")
-    if [[ $? == 0 ]]
-    then
-        tooltip=$(echo "$tooltip" | sed -E "s/\s+/ /g")
-        echo "{\"text\":\"${weather_icon} ${temperature}°C\", \"tooltip\":\"$tooltip\"}"
-        exit
-    fi
+# 判断是否需要更新
+need_update=false
+
+if [ ! -f "$CACHE" ]; then
+  need_update=true
+else
+  now=$(date +%s)
+  mtime=$(stat -c %Y "$CACHE")
+
+  if [ $((now - mtime)) -ge "$CACHE_TIME" ]; then
+    need_update=true
+  fi
 fi
 
-echo "{\"text\":\"Service Unavailable\", \"tooltip\":\"Service Unavailable\"}
+# 获取最新天气
+if [ "$need_update" = true ]; then
+
+  data=$(curl -s --compressed \
+    "https://k6487tfd79.re.qweatherapi.com/v7/weather/now?location=101020100&lang=en&key=ec367b5ebc3847cabeb52006b797c4d2")
+
+  # API 返回正常才保存
+  if echo "$data" | jq -e '.now' >/dev/null 2>&1; then
+    printf '%s\n' "$data" >"$CACHE"
+  fi
+fi
+
+# 缓存不存在，直接退出
+if [ ! -f "$CACHE" ]; then
+  echo '{"text":"🌈 --°C","tooltip":"Weather data unavailable","class":"weather","alt":"0","percentage":0}'
+  exit 0
+fi
+
+# 从缓存读取
+data=$(cat "$CACHE")
+
+# 解析天气
+temp=$(echo "$data" | jq -r '.now.temp // "0"')
+feels=$(echo "$data" | jq -r '.now.feelsLike // "0"')
+text=$(echo "$data" | jq -r '.now.text // "Unknown"')
+windDir=$(echo "$data" | jq -r '.now.windDir // "Unknown"')
+windSpeed=$(echo "$data" | jq -r '.now.windSpeed // "0"')
+
+# 确保数字有效
+[[ "$temp" =~ ^-?[0-9]+$ ]] || temp=0
+[[ "$windSpeed" =~ ^[0-9]+$ ]] || windSpeed=0
+
+# 天气图标
+case "$text" in
+Clear | Sunny)
+  icon="☀️"
+  ;;
+Cloudy | Overcast)
+  icon="☁️"
+  ;;
+Rain* | Shower*)
+  icon="🌧️"
+  ;;
+Thunder*)
+  icon="⛈️"
+  ;;
+Snow*)
+  icon="❄️"
+  ;;
+Fog* | Mist | Haze)
+  icon="🌫️"
+  ;;
+*)
+  icon="🌈"
+  ;;
+esac
+
+# 风速图标
+if [ "$windSpeed" -le 2 ]; then
+  windIcon="💨"
+elif [ "$windSpeed" -le 5 ]; then
+  windIcon="🌀"
+elif [ "$windSpeed" -le 10 ]; then
+  windIcon="🌬️"
+else
+  windIcon="🌪️"
+fi
+
+# 温度颜色
+if [ "$temp" -le 0 ]; then
+  color="#4A90E2"
+elif [ "$temp" -le 15 ]; then
+  color="#50E3C2"
+elif [ "$temp" -le 25 ]; then
+  color="#F5A623"
+else
+  color="#D0021B"
+fi
+
+# 输出 JSON 给 Waybar
+printf '{"text":"%s %s°C ","tooltip":"%s, Feels like %s°C, %s wind %s %s km/h","class":"weather","alt":"%s","percentage":%s,"color":"%s"}\n' \
+  "$icon" "$temp" "$text" "$feels" "$windDir" "$windIcon" "$windSpeed" "$temp" "$temp" "$color"

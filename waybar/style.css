@@ -9,6 +9,7 @@
 
 window#waybar {
     background: transparent;
+    /*background-color: rgba(0, 0, 0, 0.3);*/
     color: @overlay0;
     transition-property: background-color;
     transition-duration: 0.1s;
@@ -51,6 +52,7 @@ button:hover {
 }
 
 #pulseaudio,
+#workspaces,
 #clock,
 #battery,
 #memory,
@@ -137,12 +139,35 @@ button:hover {
     border-bottom: 2px solid @gsapphire;
 }
 
+#custom-power tooltip {
+    background: rgba(15, 15, 15, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+#custom-power tooltip label {
+    color: #ffffff;
+    font-size: 13px;
+}
+
 #custom-wave {
-    color: @lavender;
+    color: @yellow;
     border-bottom: 2px solid @lavender;
 }
 
-# custom-media {
+#custom-media {
     color: @text;
     border-bottom: 2px solid @text;
+}
+
+#tooltip {
+    background: rgba(0, 0, 0, 0.3);  /* 半透明 */
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#tooltip label {
+    color: #ffffff;
 }
