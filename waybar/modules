@@ -121,7 +121,7 @@
     "tooltip": false,
     "scroll-step": 1,
     "on-click": "sleep 0.1 && pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "sleep 0.1 && pavucontrol"
+    "on-click-right": "$HOME/.config/waybar/scripts/headphone.sh"
   },
   "tray": {
     "icon-size": 20,
