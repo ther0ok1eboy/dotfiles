@@ -1,10 +1,10 @@
-# dotfiles
+# 🏠 dotfiles
 
-我的 Linux Wayland 桌面配置，围绕 **Hyprland** 构建，搭配 Catppuccin Mocha 风格、Waybar、Fish、Kitty、Neovim 和 Yazi。
+我的 Arch Linux Wayland 桌面配置，围绕 **Hyprland** 构建，搭配 Catppuccin Mocha 风格、Waybar、Fish、Kitty、Neovim 和 Yazi。✨
 
-> 这是个人使用中的配置集合，不保证开箱即用。安装前请根据自己的硬件、显示器和目录结构调整相关配置。
+> ⚠️ 这是个人使用中的配置集合，不保证开箱即用。安装前请根据自己的硬件、显示器和目录结构调整相关配置。
 
-## Preview
+## 🖼️ Preview
 
 <p align="center">
   <img src="./output.gif" alt="Pacman animation" />
@@ -24,11 +24,11 @@
   </tr>
 </table>
 
-## Waybar 糖豆人动画
+## 🍬 Waybar 糖豆人动画
 
-Preview 顶部的 `pacman-animation.gif` 对应的是 Waybar 自定义模块动画，相关脚本和字体资源位于 [`waybar/scripts/pacman.sh-resource`](https://github.com/ther0ok1eboy/dotfiles/tree/master/waybar/scripts/pacman.sh-resource)。
+Preview 顶部的 `output.gif` 对应的是 Waybar 自定义模块动画 🎞️，相关脚本和字体资源位于 [`waybar/scripts/pacman.sh-resource`](https://github.com/ther0ok1eboy/dotfiles/tree/master/waybar/scripts/pacman.sh-resource)。
 
-## Components
+## 🧩 Components
 
 | Component | Directory | Description |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ Preview 顶部的 `pacman-animation.gif` 对应的是 Waybar 自定义模块动�
 | [Mako](https://github.com/emersion/mako) | `mako/` | Wayland 通知守护进程 |
 | [CopyQ](https://hluk.github.io/CopyQ/) / `cliphist` | `copyq/` | 剪贴板管理 |
 
-## Repository layout
+## 📁 Repository layout
 
 ```text
 .
@@ -59,16 +59,16 @@ Preview 顶部的 `pacman-animation.gif` 对应的是 Waybar 自定义模块动�
 └── yazi/        # Yazi 配置、主题和文件预览脚本
 ```
 
-## Installation
+## 🚀 Installation
 
-### 1. Clone
+### 1. 📥 Clone
 
 ```bash
 git clone https://github.com/ther0ok1eboy/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
-### 2. Install dependencies
+### 2. 📦 Install dependencies
 
 根据发行版安装对应软件包。常用依赖包括：
 
@@ -80,9 +80,9 @@ fcitx5 starship cava playerctl jq curl
 
 部分脚本还会使用 `awww`、`mpvpaper`、`tesseract`、`bluetoothctl`、`pavucontrol` 和 `nm-applet`，可按需安装。
 
-## Important local settings
+## ⚠️ Important local settings
 
-安装后建议优先检查以下文件中的机器相关配置：
+安装后建议优先检查以下文件中的机器相关配置 🛠️：
 
 - `hypr/awesomeconf/monitor.lua`：显示器名称、分辨率、刷新率和布局。
 - `hypr/awesomeconf/autostart.lua`：登录后自动启动的程序。
@@ -92,9 +92,9 @@ fcitx5 starship cava playerctl jq curl
 - `waybar/scripts/weather.sh`：天气城市和 API 配置需要替换为自己的设置。
 - `fish/config.fish`：代理、输入法和环境变量配置。
 
-不要直接复制其中的个人路径、代理地址或 API 密钥到其他机器。
+不要直接复制其中的个人路径、代理地址或 API 密钥到其他机器。🔒
 
-## Keybindings
+## ⌨️ Keybindings
 
 默认主修饰键为 `Super`：
 
@@ -116,13 +116,13 @@ fcitx5 starship cava playerctl jq curl
 
 快捷键定义位于 `hypr/awesomeconf/binds.lua`，可按个人习惯修改。
 
-## Notes
+## 📝 Notes
 
 - 当前配置主要面向 Linux + Wayland + Hyprland。
 - Neovim 使用 LazyVim，插件版本记录在 `nvim/lazy-lock.json`。
 - 配置中的第三方主题目录保留了各自的上游仓库和许可证文件。
 - 修改配置后通常需要重启对应程序；修改 Hyprland 启动项或环境变量后建议重启 Hyprland 会话。
 
-## License
+## 📜 License
 
 本仓库主要用于个人配置备份。仓库内第三方主题、插件和资源文件请遵循其各自目录中的许可证。
