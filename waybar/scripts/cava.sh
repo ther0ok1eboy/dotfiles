@@ -1,43 +1,71 @@
-#! /bin/bash
-is_cava_ServerExist=$(ps -ef | grep -m 1 cava | grep -v "grep" | wc -l)
-if [ "$is_cava_ServerExist" = "0" ]; then
-  echo "cava_server not found" >/dev/null 2>&1
-#	exit;
-elif [ "$is_cava_ServerExist" = "1" ]; then
-  killall cava
-fi
+#!/usr/bin/env bash
 
-bar="▁▂▃▄▅▆▇█"
-dict="s/;//g;"
-# creating "dictionary" to replace char with bar
-i=0
-while [ $i -lt ${#bar} ]; do
-  dict="${dict}s/$i/${bar:$i:1}/g;"
-  i=$((i = i + 1))
-done
-# make sure to clean pipe
-pipe="/tmp/cava.fifo"
-if [ -p $pipe ]; then
-  unlink $pipe
-fi
-mkfifo $pipe
+set -u
 
-# write cava config
-config_file="/tmp/waybar_cava_config"
-echo "
+PIPE="/tmp/waybar-cava.fifo"
+CONFIG="/tmp/waybar-cava.conf"
+
+# Cava levels: 0-7
+BARS="▁▂▃▄▅▆▇█"
+
+cava_pid=""
+
+cleanup() {
+  if [[ -n "$cava_pid" ]]; then
+    kill "$cava_pid" 2>/dev/null
+    wait "$cava_pid" 2>/dev/null
+  fi
+
+  rm -f "$PIPE" "$CONFIG"
+}
+
+trap cleanup EXIT INT TERM HUP
+
+# Clean up possible leftovers
+rm -f "$PIPE" "$CONFIG"
+
+# Create FIFO
+mkfifo "$PIPE"
+
+# Cava configuration
+cat >"$CONFIG" <<EOF
 [general]
 bars = 16
+framerate = 30
+
 [output]
 method = raw
-raw_target = $pipe
+raw_target = $PIPE
 data_format = ascii
 ascii_max_range = 7
-" >$config_file
+EOF
 
-# run cava in the background
-cava -p $config_file &
+# Start Cava
+cava -p "$CONFIG" &
+cava_pid=$!
 
-# reading data from fifo
-while read -r cmd; do
-  echo $cmd | sed "$dict"
-done <$pipe
+# Read Cava output
+while IFS= read -r line; do
+  # Remove semicolon without spawning sed
+  line=${line//;/}
+
+  # Convert 0-7 to ▁▂▃▄▅▆▇█
+  output=""
+
+  for ((i = 0; i < ${#line}; i++)); do
+    char=${line:i:1}
+
+    case "$char" in
+    0) output+="▁" ;;
+    1) output+="▂" ;;
+    2) output+="▃" ;;
+    3) output+="▄" ;;
+    4) output+="▅" ;;
+    5) output+="▆" ;;
+    6) output+="▇" ;;
+    7) output+="█" ;;
+    esac
+  done
+
+  printf '%s\n' "$output"
+done <"$PIPE"
