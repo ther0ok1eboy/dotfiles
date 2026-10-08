@@ -1,5 +1,5 @@
 ## Preview
-
+![alt text](./pacman-animation.gif) 
 ![three](./20250220_17h00m00s_grim.png)
 ![four](./20250220_17h01m54s_grim.png)
 ![five](./20250220_17h09m10s_grim.png) 
