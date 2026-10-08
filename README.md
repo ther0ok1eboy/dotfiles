@@ -7,7 +7,7 @@
 ## Preview
 
 <p align="center">
-  <img src="./pacman-animation.gif" alt="Pacman animation" />
+  <img src="./output.gif" alt="Pacman animation" />
 </p>
 
 <table>
