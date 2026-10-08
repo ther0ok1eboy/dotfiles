@@ -24,6 +24,44 @@
   </tr>
 </table>
 
+## Waybar 糖豆人动画
+
+Preview 顶部的 `pacman-animation.gif` 对应的是 Waybar 自定义模块动画，相关脚本和字体资源位于 [`waybar/scripts/pacman.sh-resource`](https://github.com/ther0ok1eboy/dotfiles/tree/master/waybar/scripts/pacman.sh-resource)。
+
+### 工作方式
+
+- `waybar/scripts/pacman.sh` 持续输出多帧文本动画，每秒移动一次角色和背景点阵。
+- `waybar/modules` 中的 `custom/wave` 模块执行该脚本，并关闭 tooltip。
+- `waybar/style.css` 为该模块设置黄色文字和底部边框。
+- 动画使用 Nerd Font 的私用区字符绘制角色，因此需要正确安装字体才能显示。
+
+### 安装字体
+
+`pacman.sh-resource` 提供了 `ComicShannsMonoNerdFont-Reverse-v2.otf`，其中包含原始和水平镜像的角色图标。Linux 用户可以运行：
+
+```bash
+cd waybar/scripts/pacman.sh-resource
+./install-linux.sh
+```
+
+安装完成后重启 Waybar：
+
+```bash
+pkill waybar
+waybar &
+```
+
+也可以手动复制字体并刷新字体缓存：
+
+```bash
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/fonts"
+cp ComicShannsMonoNerdFont-Reverse-v2.otf \
+  "${XDG_DATA_HOME:-$HOME/.local/share}/fonts/"
+fc-cache -f
+```
+
+如果角色显示为方框，请确认 Waybar/Kitty 使用了对应的 `ComicShannsMono Nerd Font Reverse V2` 字体，并检查 `waybar/style.css` 中的 `font-family` 设置。
+
 ## Components
 
 | Component | Directory | Description |
@@ -51,7 +89,7 @@
 ├── mako/        # Mako 通知配置
 ├── nvim/        # Neovim / LazyVim 配置
 ├── rofi/        # Rofi 配置与主题
-├── waybar/      # Waybar 配置、样式和自定义脚本
+├── waybar/      # Waybar 配置、样式、自定义脚本和动画字体资源
 └── yazi/        # Yazi 配置、主题和文件预览脚本
 ```
 
