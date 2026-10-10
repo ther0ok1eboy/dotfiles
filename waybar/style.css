@@ -1,173 +1,211 @@
-@import "mocha.css"; 
+@import "mocha.css";
+
+/*
+ * Catppuccin Mocha
+ * Base: #1e1e2e | Mantle: #181825 | Crust: #11111b
+ */
 
 * {
     font-family: "ComicShannsMono Nerd Font";
     font-size: 16px;
-    min-height: 0;
     font-weight: bold;
+    min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    /*background-color: rgba(0, 0, 0, 0.3);*/
-    color: @overlay0;
-    transition-property: background-color;
-    transition-duration: 0.1s;
+    color: @text;
+    transition: background-color 0.2s ease;
 }
 
-#window {
-    margin: 8px;
-}
-
-button {
-    box-shadow: inset 0 -3px transparent;
+/* Minimal module style: transparent modules with a bottom accent line */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-weather,
+#custom-cava,
+#custom-media,
+#custom-wave,
+#custom-power {
+    margin: 1px 3px;
+    padding: 1px 8px;
+    background-color: transparent;
     border: none;
+    border-bottom: 2px solid @surface0;
     border-radius: 0;
 }
 
+#window {
+    margin: 2px 8px;
+    color: @subtext1;
+}
+
+button {
+    padding: 0;
+    color: @subtext0;
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    box-shadow: none;
+}
+
 button:hover {
-    background: inherit;
     color: @yellow;
-    border-top: 2px solid @yellow;
+    background-color: transparent;
+}
+
+/* Workspaces */
+#workspaces {
+    padding: 1px 4px;
+    color: @yellow;
+    border-bottom-color: @yellow;
 }
 
 #workspaces button {
-    padding: 0 4px;
+    min-width: 24px;
+    padding: 1px 5px;
 }
 
-#workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
-}
-
+#workspaces button.focused,
 #workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
+    color: @green;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    color: @red;
+    background-color: transparent;
+    box-shadow: none;
 }
 
-#pulseaudio,
-#workspaces,
-#clock,
-#battery,
-#memory,
-#backlight,
-#custom-weather,
-#custom-wave,
-#custom-power,
-#custom-media,
-#custom-cava,
-#backlight,
-#tray,
-#cpu,
-#network {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
+/* Module accents */
 #clock {
-    color: @rosewater;
-    border-bottom: 2px solid @rosewater;
+    color: @white;
+    border-bottom: 2px solid @mauve;
+}
+
+#clock label {
+    color: @mauve;
 }
 
 #clock.date {
     color: @mauve;
-    border-bottom: 2px solid @mauve;
+    border-bottom-color: @mauve;
 }
 
-#pulseaudio {
-    color: @flamingo;
-    border-bottom: 2px solid @flamingo;
-}
-
-#backlight {
-    color: @pink;
-    border-bottom: 2px solid @pink;
-}
-
-#network {
+#clock.date label {
     color: @mauve;
-    border-bottom: 2px solid @mauve;
 }
 
 #cpu {
     color: @blue;
-    border-bottom: 2px solid @blue;
+    border-bottom-color: @blue;
+}
+
+#memory {
+    color: @red;
+    border-bottom-color: @red;
+}
+
+#network {
+    color: @sapphire;
+    border-bottom-color: @sapphire;
+}
+
+#pulseaudio {
+    color: @flamingo;
+    border-bottom-color: @flamingo;
+}
+
+#backlight {
+    color: @pink;
+    border-bottom-color: @pink;
 }
 
 #battery {
     color: @green;
-    border-bottom: 2px solid @green;
+    border-bottom-color: @green;
+}
+
+#battery.warning {
+    color: @yellow;
+    border-bottom-color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+    border-bottom-color: @red;
 }
 
 #tray {
     color: @maroon;
-    border-bottom: 2px solid @maroon;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
+    border-bottom-color: @maroon;
 }
 
 #custom-weather {
     color: @sky;
-    border-bottom: 2px solid @sky;
+    border-bottom-color: @sky;
 }
 
 #custom-cava {
     color: @teal;
-    border-bottom: 2px solid @teal;
+    border-bottom-color: @teal;
 }
 
-#custom-power { 
-    color: @sapphire;
-    border-bottom: 2px solid @gsapphire;
-}
-
-#custom-power tooltip {
-    background: rgba(15, 15, 15, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-}
-
-#custom-power tooltip label {
-    color: #ffffff;
-    font-size: 13px;
+#custom-media {
+    color: @rosewater;
+    border-bottom-color: @rosewater;
 }
 
 #custom-wave {
     color: @yellow;
-    border-bottom: 2px solid @lavender;
+    border-bottom-color: @peach;
 }
 
-#custom-media {
+#custom-power {
+    color: @lavender;
+    border-bottom-color: @lavender;
+}
+
+/* Keep edge modules aligned with the bar */
+.modules-left > widget:first-child > #workspaces,
+.modules-left > widget:first-child > #cpu,
+.modules-right > widget:last-child > #custom-power {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces,
+.modules-right > widget:last-child > #custom-power {
+    margin-right: 0;
+}
+
+/* Tooltips */
+tooltip {
+    padding: 8px 10px;
     color: @text;
-    border-bottom: 2px solid @text;
+    background-color: @base;
+    border: 1px solid @surface1;
+    border-radius: 10px;
 }
 
-#tooltip {
-    background: rgba(0, 0, 0, 0.3);  /* 半透明 */
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.1);
+tooltip label {
+    color: @text;
 }
 
-#tooltip label {
-    color: #ffffff;
+#custom-power tooltip {
+    padding: 10px;
+    background-color: @base;
+    border-color: @sapphire;
+}
+
+#custom-power tooltip label {
+    color: @subtext1;
+    font-size: 13px;
 }

@@ -22,7 +22,6 @@ fi
 
 # 获取最新天气
 if [ "$need_update" = true ]; then
-
   data=$(curl -s --compressed \
     "https://k6487tfd79.re.qweatherapi.com/v7/weather/now?location=101020100&lang=en&key=ec367b5ebc3847cabeb52006b797c4d2")
 
@@ -34,7 +33,7 @@ fi
 
 # 缓存不存在，直接退出
 if [ ! -f "$CACHE" ]; then
-  echo '{"text":"🌈 --°C","tooltip":"Weather data unavailable","class":"weather","alt":"0","percentage":0}'
+  echo '{"text":"󰖙 --°C","tooltip":"Weather data unavailable","class":"weather","alt":"0","percentage":0}'
   exit 0
 fi
 
@@ -52,40 +51,43 @@ windSpeed=$(echo "$data" | jq -r '.now.windSpeed // "0"')
 [[ "$temp" =~ ^-?[0-9]+$ ]] || temp=0
 [[ "$windSpeed" =~ ^[0-9]+$ ]] || windSpeed=0
 
-# 天气图标
+# 天气图标：Nerd Font
 case "$text" in
 Clear | Sunny)
-  icon="☀️"
+  icon="󰖙 "
   ;;
-Cloudy | Overcast)
-  icon="☁️"
+Cloudy)
+  icon="󰖐 "
+  ;;
+Overcast)
+  icon="󰖑 "
   ;;
 Rain* | Shower*)
-  icon="🌧️"
+  icon="󰖗 "
   ;;
 Thunder*)
-  icon="⛈️"
+  icon="󰖓 "
   ;;
 Snow*)
-  icon="❄️"
+  icon="󰖘 "
   ;;
 Fog* | Mist | Haze)
-  icon="🌫️"
+  icon="󰖑 "
   ;;
 *)
-  icon="🌈"
+  icon="󰖐 "
   ;;
 esac
 
-# 风速图标
+# 风速图标：Nerd Font
 if [ "$windSpeed" -le 2 ]; then
-  windIcon="💨"
+  windIcon="󰖝 "
 elif [ "$windSpeed" -le 5 ]; then
-  windIcon="🌀"
+  windIcon="󰖞 "
 elif [ "$windSpeed" -le 10 ]; then
-  windIcon="🌬️"
+  windIcon="󰖙 "
 else
-  windIcon="🌪️"
+  windIcon="󰖛 "
 fi
 
 # 温度颜色
@@ -100,5 +102,5 @@ else
 fi
 
 # 输出 JSON 给 Waybar
-printf '{"text":"%s %s°C ","tooltip":"%s, Feels like %s°C, %s wind %s %s km/h","class":"weather","alt":"%s","percentage":%s,"color":"%s"}\n' \
+printf '{"text":"%s%s°C ","tooltip":"%s, Feels like %s°C, %s wind %s %s km/h","class":"weather","alt":"%s","percentage":%s,"color":"%s"}\n' \
   "$icon" "$temp" "$text" "$feels" "$windDir" "$windIcon" "$windSpeed" "$temp" "$temp" "$color"
