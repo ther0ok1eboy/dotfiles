@@ -9,7 +9,7 @@
 ## 🖼️ Preview
 
 <p align="center">
-  <img src="./output.gif" alt="Pacman animation" />
+  <img src="./output1.gif" alt="Pacman animation" />
 </p>
 
 <table>

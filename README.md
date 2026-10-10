@@ -9,7 +9,7 @@ My Arch Linux Wayland desktop configuration, built around **Hyprland** with a Ca
 ## 🖼️ Preview
 
 <p align="center">
-  <img src="./output.gif" alt="Pacman animation" />
+  <img src="./output1.gif" alt="Pacman animation" />
 </p>
 
 <table>
